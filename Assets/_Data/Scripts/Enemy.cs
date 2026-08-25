@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     int currentHp = 90;
     int maxHp = 100; 
     float weight = 2.5f;
-    string enemyName = "Zombie";
     bool isDead = false;
+    bool isBoss = true;
 
     EnemyHead head = new EnemyHead();
     EnemyHeart heart = new EnemyHeart();
@@ -18,15 +18,12 @@ public class Enemy : MonoBehaviour
         this.GetName();
     }
 
-    string GetName()
-    {
-        return this.enemyName;
-    }
+    protected abstract string GetName();
 
     public void Moving()
     {
         string logMessage = this.GetName() + " Moving";
-        Debug.Log("Moving");
+        Debug.Log(logMessage);
     }
 
     float GetWeight()

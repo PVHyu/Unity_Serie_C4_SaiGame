@@ -7,14 +7,20 @@ public class MyScript : MonoBehaviour
     void FixedUpdate()
     {
         this.TestClass();
+        this.TestOperator();
+    }
+
+    void TestOperator()
+    {
+        
     }
 
     void TestClass()
     {
-        Enemy zombie = new Enemy();
-        Enemy wolf = new Enemy();
-        Enemy eagle = new Enemy();
-        Enemy ghost = new Enemy();
+        Zombie zombie = new Zombie();
+        Wolf wolf = new Wolf();
+        Eagle eagle = new Eagle();
+        Ghost ghost = new Ghost();
 
         zombie.Moving();
         wolf.Moving();
