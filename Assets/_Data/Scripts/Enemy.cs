@@ -9,4 +9,22 @@ public class Enemy : MonoBehaviour
     float weight = 2.5f;
     string name = "Zombie";
     bool isDead = false;
+
+    EnemyHead head = new EnemyHead();
+    EnemyHeart heart = new EnemyHeart();
+
+    void Moving()
+    {
+        
+    }
+
+    float GetWeight()
+    {
+        return this.weight;
+    }
+
+    int GetCurrentHp()
+    {
+        return this.currentHp;
+    }
 }
