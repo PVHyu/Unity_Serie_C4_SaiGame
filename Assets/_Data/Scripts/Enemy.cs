@@ -18,7 +18,17 @@ public abstract class Enemy : MonoBehaviour
         this.GetName();
     }
 
-    protected abstract string GetName();
+    public virtual bool IsDead()
+    {
+        if(this.currentHp > 0) this.isDead = false;
+        else this.isDead = true;   
+
+        // if(this.currentHp <= 0) this.isDead = true;
+        // else this.isDead = false;
+        return this.isDead;
+    }
+
+    public abstract string GetName();
 
     public void Moving()
     {
@@ -31,8 +41,13 @@ public abstract class Enemy : MonoBehaviour
         return this.weight;
     }
 
-    int GetCurrentHp()
+    public virtual int GetCurrentHP()
     {
         return this.currentHp;
+    }
+
+    public virtual void SetHP(int newHP)
+    {
+        this.currentHp = newHP;
     }
 }

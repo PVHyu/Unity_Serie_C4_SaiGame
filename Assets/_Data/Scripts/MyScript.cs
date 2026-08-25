@@ -1,18 +1,25 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 
 public class MyScript : MonoBehaviour
 {
     void FixedUpdate()
     {
         this.TestClass();
-        this.TestOperator();
+        this.TestIsDead();
     }
 
-    void TestOperator()
+    void TestIsDead()
     {
-        
+        Zombie zombie = new Zombie();
+        zombie.SetHP(0);
+        string logMessage = zombie.GetName() + ": " + zombie.GetCurrentHP() + " " + zombie.IsDead();
+        Ghost ghost = new Ghost();
+        string Message = ghost.GetName() + ": " + ghost.GetCurrentHP() + " " + ghost.IsDead();
+        Debug.Log(Message);
+        Debug.Log(logMessage);
     }
 
     void TestClass()

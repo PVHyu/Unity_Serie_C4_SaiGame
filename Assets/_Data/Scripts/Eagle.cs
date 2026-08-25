@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Eagle : Enemy
 {
-    protected override string GetName()
+    public override string GetName()
     {
         return "Eagle";
     }
