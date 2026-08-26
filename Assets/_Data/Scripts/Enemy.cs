@@ -10,12 +10,19 @@ public abstract class Enemy : MonoBehaviour
     bool isDead = false;
     bool isBoss = true;
 
-    EnemyHead head = new EnemyHead();
-    EnemyHeart heart = new EnemyHeart();
+    // EnemyHead head = new EnemyHead();
+    // EnemyHeart heart = new EnemyHeart();
+
+    private void FixedUpdate()
+    {
+        this.TestClass();
+    }
 
     void TestClass()
     {
-        this.GetName();
+        this.SetHP(0);
+        string logMessage = this.GetName() + ": " + this.GetCurrentHP() + " " + this.IsDead();
+        Debug.Log(logMessage);
     }
 
     public virtual bool IsDead()
