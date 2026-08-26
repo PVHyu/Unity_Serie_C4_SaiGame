@@ -7,6 +7,7 @@ using Unity.IO.LowLevel.Unsafe;
 public class EnemyManager : MonoBehaviour
 {
     List<Enemy> enemies = new();
+    public List<Enemy> Enemies => enemies;
     Enemy smallestEnemy;
     Enemy biggestEnemy;
 
