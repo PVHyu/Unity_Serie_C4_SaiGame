@@ -15,7 +15,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.TestClass();
+        //this.TestClass();
     }
 
     void TestClass()

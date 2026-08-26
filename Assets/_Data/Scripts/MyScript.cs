@@ -7,8 +7,8 @@ public class MyScript : MonoBehaviour
 {
     void FixedUpdate()
     {
-        this.TestClass();
-        this.TestIsDead();
+        // this.TestClass();
+        // this.TestIsDead();
     }
 
     void TestIsDead()
