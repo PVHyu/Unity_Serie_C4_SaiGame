@@ -20,7 +20,7 @@ public class EnemyCtrl : SaiMonoBehaviour
     {
         if(this.agent != null) return;
         this.agent = GetComponent<NavMeshAgent>();
-        this.agent.speed = 3.5f;
+        this.agent.speed = 20f;
         this.agent.angularSpeed = 120f;
         this.agent.acceleration = 8f;
         Debug.Log(transform.name + ": LoadNavMeshAgent", gameObject);

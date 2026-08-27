@@ -8,7 +8,12 @@ public class EnemyMoving : SaiMonoBehaviour
     public GameObject target;
     [SerializeField] protected EnemyCtrl enemyCtrl;
     [SerializeField] protected int pathIndex = 0;
+    [SerializeField] protected string pathName;
     [SerializeField] protected Path enemyPath;
+    [SerializeField] protected Point currentPoint;
+    [SerializeField] protected float pointDistance = Mathf.Infinity;
+    [SerializeField] protected float stopDistance = 1f;
+    [SerializeField] protected bool isFinish = false;
 
     protected override void Start()
     {
@@ -43,13 +48,31 @@ public class EnemyMoving : SaiMonoBehaviour
 
     protected virtual void Moving()
     {
-        this.enemyCtrl.Agent.SetDestination(target.transform.position);
+        this.FindNextPoint();
+        if(this.currentPoint == null || this.isFinish == true)
+        {
+            this.enemyCtrl.Agent.isStopped = true;
+            return;
+        }
+        this.enemyCtrl.Agent.SetDestination(this.currentPoint.transform.position);
+    }
+
+    protected virtual void FindNextPoint()
+    {
+        if(this.currentPoint == null) this.currentPoint = this.enemyPath.GetPoint(0);
+
+        this.pointDistance = Vector3.Distance(transform.position, this.currentPoint.transform.position);
+        if(this.pointDistance < this.stopDistance)
+        {
+            this.currentPoint = this.currentPoint.NextPoint;
+            if (this.currentPoint == null) this.isFinish = true;
+        }
     }
 
     protected virtual void LoadEnemyPath()
     {
         if(this.enemyPath != null) return;
-        this.enemyPath = PathsManager.Instance.GetPath(this.pathIndex);
+        this.enemyPath = PathsManager.Instance.GetPath(this.pathName);
         Debug.Log(transform.name + ": LoadEnemyCtrl", gameObject);
     }
 }
