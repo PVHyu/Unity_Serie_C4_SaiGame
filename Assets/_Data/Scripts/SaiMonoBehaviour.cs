@@ -5,7 +5,12 @@ using System.Data.SqlTypes;
 
 public class SaiMonoBehaviour : MonoBehaviour
 {
-    protected void Awake()
+    protected virtual void Start()
+    {
+        
+    } 
+
+    protected virtual void Awake()
     {
         this.LoadComponents();
     }
