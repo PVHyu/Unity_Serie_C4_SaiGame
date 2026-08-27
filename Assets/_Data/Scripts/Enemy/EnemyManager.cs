@@ -24,7 +24,9 @@ public class EnemyManager : MonoBehaviour
 
     protected virtual void LoadBiggestEnemy()
     {
+        if(this.enemies.Count == 0) return;
         biggestEnemy = this.enemies[0];
+        if(biggestEnemy == null) return;
         float biggestWeight = this.enemies[0].GetWeight();
         foreach (Enemy enemy in this.enemies)
         {
@@ -39,6 +41,7 @@ public class EnemyManager : MonoBehaviour
 
     protected virtual void LoadSmallestEnemy()
     {
+        if(this.enemies.Count == 0) return;
         smallestEnemy = this.enemies[0];
         float smallestWeight = this.enemies[0].GetWeight();
         foreach (Enemy enemy in this.enemies)
