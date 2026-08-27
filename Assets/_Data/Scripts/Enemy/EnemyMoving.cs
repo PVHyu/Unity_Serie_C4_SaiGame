@@ -3,13 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-public class EnemyMoving : MonoBehaviour
+public class EnemyMoving : SaiMonoBehaviour
 {
     public GameObject target;
-    public NavMeshAgent agent;
+    [SerializeField] protected EnemyCtrl enemyCtrl;
 
     void FixedUpdate()
     {
-        agent.SetDestination(target.transform.position);
+        this.Moving();
+    }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadCtrl();
+        this.LoadTarget();
+    }
+
+    protected virtual void LoadCtrl()
+    {
+        if(this.enemyCtrl != null) return;
+        this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
+        Debug.Log(transform.name + ": EnemyCtrl", gameObject);
+    }
+
+    protected virtual void LoadTarget()
+    {
+        if(this.target != null) return;
+        this.target = GameObject.Find("TargetMoving");
+        Debug.Log(transform.name + ": LoadTarget", gameObject);
+    }
+
+    protected virtual void Moving()
+    {
+        this.enemyCtrl.Agent.SetDestination(target.transform.position);
     }
 }

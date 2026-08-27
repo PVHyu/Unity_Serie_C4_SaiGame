@@ -83,4 +83,14 @@ public abstract class Enemy : MonoBehaviour
     {
         this.currentHp = newHP;
     }
+
+    public virtual int GetMaxHP()
+    {
+        return this.maxHp;
+    } 
+
+    public bool IsBoss()
+    {
+        return this.isBoss;
+    }
 }

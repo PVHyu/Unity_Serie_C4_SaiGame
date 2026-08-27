@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &303761799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303761800}
+  - component: {fileID: 303761801}
+  m_Layer: 0
+  m_Name: EnemyMoving
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &303761800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303761799}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 883928205}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303761801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303761799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
+  target: {fileID: 1267631336}
+  enemyCtrl: {fileID: 883928208}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +551,6 @@ GameObject:
   m_Component:
   - component: {fileID: 534201747}
   - component: {fileID: 534201749}
-  - component: {fileID: 534201748}
   - component: {fileID: 534201750}
   m_Layer: 0
   m_Name: Maria
@@ -528,22 +573,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1944087130}
+  - {fileID: 1353697967}
   m_Father: {fileID: 2003892418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534201748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534201746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
-  target: {fileID: 1267631336}
-  agent: {fileID: 534201749}
 --- !u!195 &534201749
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -589,7 +621,6 @@ GameObject:
   m_Component:
   - component: {fileID: 557177479}
   - component: {fileID: 557177481}
-  - component: {fileID: 557177480}
   - component: {fileID: 557177482}
   m_Layer: 0
   m_Name: Parasite
@@ -612,22 +643,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 724620100}
+  - {fileID: 1154757425}
   m_Father: {fileID: 2003892418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &557177480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557177478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
-  target: {fileID: 1267631336}
-  agent: {fileID: 557177481}
 --- !u!195 &557177481
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -789,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57e6a0d9eec50194c8aecd87744a22aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57e6a0d9eec50194c8aecd87744a22aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -825,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57e6a0d9eec50194c8aecd87744a22aa, type: 3}
       propertyPath: m_Name
-      value: Zombiegirl W Kurniawan
+      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1071,11 +1089,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4e9ae0564cba8944eacf73b882c65705, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e9ae0564cba8944eacf73b882c65705, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e9ae0564cba8944eacf73b882c65705, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1357,7 +1375,6 @@ GameObject:
   m_Component:
   - component: {fileID: 883928205}
   - component: {fileID: 883928207}
-  - component: {fileID: 883928206}
   - component: {fileID: 883928208}
   m_Layer: 0
   m_Name: Zombiegirl
@@ -1380,22 +1397,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 698393244}
+  - {fileID: 303761800}
   m_Father: {fileID: 2003892418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &883928206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883928204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
-  target: {fileID: 1267631336}
-  agent: {fileID: 883928207}
 --- !u!195 &883928207
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1431,6 +1435,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCtrl
   agent: {fileID: 883928207}
+--- !u!1 &1154757424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154757425}
+  - component: {fileID: 1154757426}
+  m_Layer: 0
+  m_Name: EnemyMoving
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154757425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154757424}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 557177479}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154757426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154757424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
+  target: {fileID: 1267631336}
+  enemyCtrl: {fileID: 557177482}
 --- !u!1 &1267631336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1267631337}
   m_Layer: 0
-  m_Name: Target
+  m_Name: TargetMoving
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1574,6 +1624,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346732722}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1353697966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353697967}
+  - component: {fileID: 1353697968}
+  m_Layer: 0
+  m_Name: EnemyMoving
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353697967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353697966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 534201747}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1353697968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353697966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
+  target: {fileID: 1267631336}
+  enemyCtrl: {fileID: 534201750}
 --- !u!1 &1432946978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +2032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1935175330
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2086,13 +2182,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935175329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
   target: {fileID: 1267631336}
-  agent: {fileID: 1935175335}
+  enemyCtrl: {fileID: 0}
 --- !u!1001 &1944087129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2107,7 +2203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e08c755af8bf83f4d9e73ff758b0a98a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e08c755af8bf83f4d9e73ff758b0a98a, type: 3}
       propertyPath: m_LocalPosition.z
