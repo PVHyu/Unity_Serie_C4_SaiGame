@@ -17,6 +17,17 @@ public class TowerTargetting : SaiMonoBehaviour
         //this.FindNearest();
     }
 
+    protected virtual void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("OnTriggerEnter: " + collider.name);
+        this.AddEnemy(collider);
+    }
+
+    protected virtual void OnTriggerExit(Collider collider)
+    {
+        this.RemoveEnemy(collider);
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -40,4 +51,21 @@ public class TowerTargetting : SaiMonoBehaviour
         this.rigid.useGravity = false;
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
+    
+    protected virtual void AddEnemy(Collider collider)
+    {
+        if(collider.name != Const.TOWER_TARGETTABLE) return;
+        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
+        this.enemies.Add(enemyCtrl);
+        Debug.Log("AddEnemy: " + collider.name);
+    }
+
+    protected virtual void RemoveEnemy(Collider collider)
+    {
+        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
+        this.enemies.Remove(enemyCtrl);
+        Debug.Log("RemoveEnemy: " + collider.name);
+    }
 }
+
+
