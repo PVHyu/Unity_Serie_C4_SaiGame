@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 368583276}
   target: {fileID: 440877030}
+  rotationSpeed: 2
 --- !u!114 &67489051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8051106828586211542, guid: 608d242aa4c29b54986994478203a5f0, type: 3}
@@ -612,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerCtrl
   model: {fileID: 5911749215380864673}
   rotator: {fileID: 1439088355}
+  towerTargeting: {fileID: 2052607730}
 --- !u!1 &392582256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 57e6a0d9eec50194c8aecd87744a22aa, type: 3}
@@ -3236,7 +3238,7 @@ GameObject:
   - component: {fileID: 2052607731}
   - component: {fileID: 2052607730}
   m_Layer: 0
-  m_Name: TowerTargetting
+  m_Name: TowerTargeting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3495,7 +3497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135473881}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51ba78bf978ce79419142db5a425cc6f, type: 3}
   m_Name: 
