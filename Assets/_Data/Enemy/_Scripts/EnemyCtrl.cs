@@ -10,12 +10,15 @@ public class EnemyCtrl : SaiMonoBehaviour
     public NavMeshAgent Agent => agent;
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
+    [SerializeField] protected TowerTargetable towerTargetable;
+    public TowerTargetable TowerTargetable => towerTargetable;
 
    protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadNavMeshAgent();
         this.LoadModel();
+        this.LoadTowerTargetable();
         this.LoadAnimator();
     }
 
@@ -23,9 +26,10 @@ public class EnemyCtrl : SaiMonoBehaviour
     {
         if(this.agent != null) return;
         this.agent = GetComponent<NavMeshAgent>();
-        this.agent.speed = 20f;
+        this.agent.speed = 5f;
+        this.agent.baseOffset = -0.2f;
         this.agent.angularSpeed = 120f;
-        this.agent.acceleration = 50f;
+        this.agent.acceleration = 10f;
         Debug.Log(transform.name + ": LoadNavMeshAgent", gameObject);
     }
 
@@ -40,6 +44,13 @@ public class EnemyCtrl : SaiMonoBehaviour
     {
         if(this.animator != null) return;
         this.animator = model.GetComponent<Animator>();
+        Debug.Log(transform.name + ": LoadAnimator", gameObject);
+    }
+
+    protected virtual void LoadTowerTargetable()
+    {
+        if(this.towerTargetable != null) return;
+        this.towerTargetable = transform.GetComponentInChildren<TowerTargetable>();
         Debug.Log(transform.name + ": LoadAnimator", gameObject);
     }
 }

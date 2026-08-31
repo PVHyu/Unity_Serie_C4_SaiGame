@@ -14,7 +14,7 @@ public class TowerTargetting : SaiMonoBehaviour
 
     protected void FixedUpdate()
     {
-        //this.FindNearest();
+        this.FindNearest();
     }
 
     protected virtual void OnTriggerEnter(Collider collider)
@@ -65,6 +65,21 @@ public class TowerTargetting : SaiMonoBehaviour
         EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
         this.enemies.Remove(enemyCtrl);
         Debug.Log("RemoveEnemy: " + collider.name);
+    }
+
+    protected virtual void FindNearest()
+    {
+        float nearestDistance = Mathf.Infinity;
+        float enemyDistance;
+        foreach(EnemyCtrl enemyCtrl in this.enemies)
+        {
+            enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
+            if(enemyDistance < nearestDistance)
+            {
+                nearestDistance = enemyDistance;
+                this.nearest = enemyCtrl;
+            }
+        }
     }
 }
 
