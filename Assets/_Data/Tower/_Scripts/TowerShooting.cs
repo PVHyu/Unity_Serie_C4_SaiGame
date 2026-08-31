@@ -4,6 +4,8 @@ public class TowerShooting : TowerAbstract
 {
     [SerializeField] protected EnemyCtrl target;
     [SerializeField] protected float rotationSpeed = 2.0f;
+    // [SerializeField] protected Bullet bullet;
+     
 
     protected override void Start()
     {
@@ -13,7 +15,8 @@ public class TowerShooting : TowerAbstract
 
     protected void FixedUpdate()
     {
-        this.LookingAtTarget(); 
+        this.Looking(); 
+        this.Shooting();
     }
 
     protected virtual void TargetLoaing()
@@ -22,7 +25,7 @@ public class TowerShooting : TowerAbstract
         this.target = this.towerCtrl.TowerTargeting.Nearest;
     }
 
-    protected virtual void LookingAtTarget()
+    protected virtual void Looking()
     {
         if(this.target == null) return;
         Vector3 directionToTarget = this.target.TowerTargetable.transform.position - this.towerCtrl.Rotator.position;
@@ -34,5 +37,11 @@ public class TowerShooting : TowerAbstract
         );
 
         this.towerCtrl.Rotator.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    protected virtual void Shooting()
+    {
+        if(this.target == null) return;
+        this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet);
     }
 }

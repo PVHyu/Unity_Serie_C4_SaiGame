@@ -8,12 +8,18 @@ public class TowerCtrl : SaiMonoBehaviour
     public Transform Rotator => rotator;
     [SerializeField] protected TowerTargeting towerTargeting;
     public TowerTargeting TowerTargeting => towerTargeting;
+    [SerializeField] protected BulletSpawner bulletSpawner;
+    public BulletSpawner BulletSpawner => bulletSpawner;
+    [SerializeField] protected Bullet bullet;
+    public Bullet Bullet => bullet; 
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
         this.LoadTowerTargeting();
+        this.LoadBulletSpawner();
+        this.LoadBullet();
     }
 
     protected virtual void LoadModel()
@@ -24,10 +30,22 @@ public class TowerCtrl : SaiMonoBehaviour
         this.rotator = this.model.Find("Head");
         Debug.Log(transform.name + ": LoadModel", gameObject);
     }
-
+    
     protected virtual void LoadTowerTargeting()
     {
         if(this.towerTargeting != null) return;
         this.towerTargeting = this.transform.GetComponentInChildren<TowerTargeting>();
+    }
+
+    protected virtual void LoadBulletSpawner()
+    {
+        if(this.bulletSpawner != null) return;
+        this.bulletSpawner = FindObjectsByType<BulletSpawner>()[0];
+    }
+
+    protected virtual void LoadBullet()
+    {
+        if(this.bullet != null) return;
+        this.bullet = this.transform.GetComponentInChildren<Bullet>();
     }
 }
