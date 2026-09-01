@@ -23,8 +23,5 @@ public class Point : SaiMonoBehaviour
             Transform nextSibling = transform.parent.GetChild(siblingIndex + 1);
             this.nextPoint = nextSibling.GetComponent<Point>();
         }
-
-        Debug.Log(transform.name + "siblingIndex: " + siblingIndex);
-        Debug.Log(transform.name + ": LoadNextPoiint", gameObject);
     }
 }

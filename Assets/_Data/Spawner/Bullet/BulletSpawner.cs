@@ -8,6 +8,7 @@ public class BulletSpawner : Spawner
     {
         Debug.Log("Bullet is spawning");
         Bullet newObject = Instantiate(bulletPrefab);
+        newObject.Despawn.SetSpawner(this);
         return newObject;
     }
 
