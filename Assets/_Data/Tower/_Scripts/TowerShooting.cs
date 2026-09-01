@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TowerShooting : TowerAbstract
 {
+    [SerializeField] protected float shootSpeed = 1.0f;
+    [SerializeField] protected float targetLoadSpeed = 1.0f;
     [SerializeField] protected EnemyCtrl target;
     [SerializeField] protected float rotationSpeed = 2.0f;
     // [SerializeField] protected Bullet bullet;
@@ -11,17 +13,18 @@ public class TowerShooting : TowerAbstract
     {
         base.Start();
         this.TargetLoaing();
+        this.Shooting();
     }
 
     protected void FixedUpdate()
     {
         this.Looking(); 
-        this.Shooting();
+        
     }
 
     protected virtual void TargetLoaing()
     {
-        Invoke(nameof(this.TargetLoaing), 1f);
+        Invoke(nameof(this.TargetLoaing), targetLoadSpeed);
         this.target = this.towerCtrl.TowerTargeting.Nearest;
     }
 
@@ -41,6 +44,7 @@ public class TowerShooting : TowerAbstract
 
     protected virtual void Shooting()
     {
+        Invoke(nameof(this.Shooting), shootSpeed);
         if(this.target == null) return;
         this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet);
     }

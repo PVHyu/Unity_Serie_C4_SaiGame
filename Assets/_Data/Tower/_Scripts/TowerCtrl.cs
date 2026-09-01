@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TowerCtrl : SaiMonoBehaviour
 {
@@ -13,6 +15,9 @@ public class TowerCtrl : SaiMonoBehaviour
     [SerializeField] protected Bullet bullet;
     public Bullet Bullet => bullet; 
 
+    [SerializeField] protected List<FirePoint> firePoints = new();
+    public List<FirePoint> FirePoints => firePoints;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -20,6 +25,7 @@ public class TowerCtrl : SaiMonoBehaviour
         this.LoadTowerTargeting();
         this.LoadBulletSpawner();
         this.LoadBullet();
+        this.LoadFirePoints();
     }
 
     protected virtual void LoadModel()
@@ -47,5 +53,13 @@ public class TowerCtrl : SaiMonoBehaviour
     {
         if(this.bullet != null) return;
         this.bullet = this.transform.GetComponentInChildren<Bullet>();
+    }
+
+    protected virtual void LoadFirePoints()
+    {
+        if(this.firePoints.Count > 0) return;
+        FirePoint[] firePoints = this.transform.GetComponentsInChildren<FirePoint>();
+        this.firePoints = new List<FirePoint>(firePoints);
+        Debug.Log(transform.name + ": LoadFirePoints", gameObject);
     }
 }
