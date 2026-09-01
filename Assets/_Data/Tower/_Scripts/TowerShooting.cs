@@ -50,6 +50,8 @@ public class TowerShooting : TowerAbstract
         FirePoint firePoint = this.GetFirePoint();
         if(firePoint == null) return;
         Bullet newBullet = this.towerCtrl.BulletSpawner.Spawn(this.towerCtrl.Bullet, firePoint.transform.position);
+        Vector3 rotatorDirection = this.towerCtrl.Rotator.forward;
+        newBullet.transform.forward = rotatorDirection;
         newBullet.gameObject.SetActive(true);
     }
 
