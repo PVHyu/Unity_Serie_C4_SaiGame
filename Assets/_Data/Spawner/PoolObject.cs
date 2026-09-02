@@ -1,0 +1,20 @@
+using UnityEngine;
+using System.Collections;
+
+public abstract class PoolObject : SaiMonoBehaviour
+{
+    [SerializeField] protected DespawnBase despawn;
+    public DespawnBase Despawn => despawn;
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadDespawn();
+    }
+
+    protected virtual void LoadDespawn()
+    {
+        if(this.despawn != null) return;
+        this.despawn = this.GetComponentInChildren<DespawnBase>();
+    }
+}

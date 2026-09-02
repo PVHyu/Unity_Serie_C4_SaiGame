@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Despawn<T> : SaiMonoBehaviour
+public abstract class Despawn<T> : DespawnBase where T : PoolObject
 {
     [SerializeField] protected T parent;
     [SerializeField] protected Spawner<T> spawner;
@@ -18,6 +18,7 @@ public abstract class Despawn<T> : SaiMonoBehaviour
     {
         base.LoadComponents();
         this.LoadParent();
+        this.LoadSpawner();
     }   
 
     protected virtual void LoadParent()
@@ -26,7 +27,11 @@ public abstract class Despawn<T> : SaiMonoBehaviour
         this.parent = this.transform.parent.GetComponent<T>();
     }
 
-    public virtual void SetSpawner(Spawner<T> spawner) => this.spawner = spawner;
+    protected virtual void LoadSpawner()
+    {
+        if(this.spawner != null) return;
+        this.spawner = GameObject.FindAnyObjectByType<Spawner<T>>();
+    }
 
     protected virtual void DespawnChecking()
     {

@@ -2049,6 +2049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bd5182cf00ee24c8c3f45454c68862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
+  spawnCount: 0
+  inPoolObjs: []
 --- !u!4 &1028659229
 Transform:
   m_ObjectHideFlags: 0
@@ -3920,6 +3922,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 8420456030425596396, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 697463790}
+    - target: {fileID: 8420456030425596396, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1028659228}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
