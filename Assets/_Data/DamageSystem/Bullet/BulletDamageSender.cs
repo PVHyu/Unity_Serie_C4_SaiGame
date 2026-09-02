@@ -7,12 +7,19 @@ using UnityEngine;
 public class BulletDamageSender : DamageSender
 {
     [SerializeField] protected SphereCollider sphereCollider;
+    [SerializeField] protected BulletCtrl bulletCtrl;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadSphereCollider();
-        this.LoadRigidbody();
+        this.LoadBulletCtrl();
+    }
+
+    protected virtual void LoadBulletCtrl()
+    {
+        if(this.bulletCtrl != null) return;
+        this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
     }
 
     protected virtual void LoadSphereCollider()
@@ -21,5 +28,11 @@ public class BulletDamageSender : DamageSender
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
         this.sphereCollider.radius = 0.05f;
+    }
+
+    protected override void Send(DamageReceiver damageReceiver)
+    {
+        base.Send(damageReceiver);
+        this.bulletCtrl.Bullet.Despawn.DoDespawn();
     }
 }
