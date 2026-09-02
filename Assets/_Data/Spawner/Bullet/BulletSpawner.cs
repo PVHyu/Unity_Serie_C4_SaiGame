@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BulletSpawner : Spawner
+public class BulletSpawner : Spawner<Bullet>
 {
     public virtual Bullet Spawn(Bullet bulletPrefab)
     {
