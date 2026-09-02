@@ -20,7 +20,6 @@ public class TowerTargeting : SaiMonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("OnTriggerEnter: " + collider.name);
         this.AddEnemy(collider);
     }
 
