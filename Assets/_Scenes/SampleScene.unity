@@ -319,6 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160604443}
+  - component: {fileID: 160604444}
   m_Layer: 0
   m_Name: EnemyPrefabs
   m_TagString: Untagged
@@ -344,6 +345,23 @@ Transform:
   - {fileID: 440877029}
   m_Father: {fileID: 2003892418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &160604444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160604442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85d38dfc3d86294ea64335163cfc2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPrefabs
+  enemyManagerCtrl: {fileID: 2003892419}
+  prefabs:
+  - {fileID: 557177482}
+  - {fileID: 883928208}
+  - {fileID: 440877032}
 --- !u!1001 &201247339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -956,7 +974,7 @@ Transform:
   m_GameObject: {fileID: 440877028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.66, y: -0.2, z: -21}
+  m_LocalPosition: {x: 0, y: -0.2, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1152,7 +1170,7 @@ Transform:
   m_GameObject: {fileID: 557177478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.34, y: -0.2, z: -21.15}
+  m_LocalPosition: {x: 0, y: -0.2, z: -21.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1760,7 +1778,7 @@ Transform:
   m_GameObject: {fileID: 883928204}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46, y: -0.2, z: -21}
+  m_LocalPosition: {x: 0, y: -0.2, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1975,6 +1993,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029701358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029701359}
+  - component: {fileID: 1029701360}
+  m_Layer: 0
+  m_Name: EnemySpawning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1029701359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029701358}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2003892418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1029701360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029701358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9482ecb599932428791bc6fe192851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawning
+  enemyManagerCtrl: {fileID: 2003892419}
+  spawnSpeed: 1
+  maxSpawn: 10
 --- !u!1001 &1043706376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3202,7 +3267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2003892418}
   - component: {fileID: 2003892419}
-  - component: {fileID: 2003892420}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -3224,6 +3288,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1254532808}
+  - {fileID: 1029701359}
   - {fileID: 160604443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3236,21 +3301,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2003892417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 695f29789bcba9342be10a872382e041, type: 3}
+  m_Script: {fileID: 11500000, guid: 9466443628bfa4d45b9ae2e954fd05a6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
---- !u!114 &2003892420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003892417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ede91fde9613741a37f6cf78fe4734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySort
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyManagerCtrl
+  enemySpawner: {fileID: 1254532809}
+  enemyPrefabs: {fileID: 160604444}
 --- !u!4 &2052607729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2211705052618817814, guid: 5e66dae0f32e5a740ad2ef2f137fc665, type: 3}
