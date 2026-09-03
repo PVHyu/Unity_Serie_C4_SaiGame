@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 368583276}
   currentFirePoint: 0
-  shootSpeed: 1
+  shootSpeed: 5
   targetLoadSpeed: 1
   target: {fileID: 0}
   rotationSpeed: 2
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 883928208}
   pathName: path_1
   enemyPath: {fileID: 0}
   currentPoint: {fileID: 0}
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 368583274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.28, y: 0, z: -18.46}
+  m_LocalPosition: {x: -53.88, y: 0, z: -11.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1024,6 +1024,7 @@ MonoBehaviour:
   agent: {fileID: 440877031}
   animator: {fileID: 880264605}
   towerTargetable: {fileID: 1613037122}
+  enemyDamageReceiver: {fileID: 2111258553}
 --- !u!1001 &441732979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1220,6 +1221,7 @@ MonoBehaviour:
   agent: {fileID: 557177481}
   animator: {fileID: 1721662169}
   towerTargetable: {fileID: 1580664275}
+  enemyDamageReceiver: {fileID: 1953363122}
 --- !u!1001 &585097622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1328,6 +1330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDespawn
   parent: {fileID: 883928208}
   spawner: {fileID: 1254532809}
+  isDespawnByTime: 0
   timeLife: 7
   currentTime: 7
 --- !u!4 &697463789 stripped
@@ -1828,6 +1831,7 @@ MonoBehaviour:
   agent: {fileID: 883928207}
   animator: {fileID: 698393245}
   towerTargetable: {fileID: 70781719}
+  enemyDamageReceiver: {fileID: 1515875466}
 --- !u!1001 &925510388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,7 +2244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68953c4c8845c164a90971822ecc84ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMoving
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 557177482}
   pathName: path_1
   enemyPath: {fileID: 0}
   currentPoint: {fileID: 0}
@@ -2372,6 +2376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDespawn
   parent: {fileID: 440877032}
   spawner: {fileID: 1254532809}
+  isDespawnByTime: 0
   timeLife: 7
   currentTime: 7
 --- !u!1001 &1333683298
@@ -2487,6 +2492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDespawn
   parent: {fileID: 557177482}
   spawner: {fileID: 1254532809}
+  isDespawnByTime: 0
   timeLife: 7
   currentTime: 7
 --- !u!4 &1439088355 stripped
@@ -3566,12 +3572,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135473881}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51ba78bf978ce79419142db5a425cc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutantMoving
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 440877032}
   pathName: path_0
   enemyPath: {fileID: 0}
   currentPoint: {fileID: 0}
@@ -3947,6 +3953,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 368583275}
     m_Modifications:
+    - target: {fileID: 57643482818753897, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2854754006189517901, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
