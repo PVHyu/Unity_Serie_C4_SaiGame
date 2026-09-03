@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public abstract class Spawner<T> : SaiMonoBehaviour where T : PoolObject
 {
     [SerializeField] protected int spawnCount = 0;
-    [SerializeField] protected List<T> inPoolObjs = new List<T>();
+    [SerializeField] protected List<T> inPoolObjs = new();
     public virtual Transform Spawn(Transform prefab)
     {
         Transform newObject = Instantiate(prefab);
