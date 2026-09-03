@@ -3,7 +3,7 @@ using UnityEngine;
 public class TowerShooting : TowerAbstract
 {
     [SerializeField] protected int currentFirePoint = 0;
-    [SerializeField] protected float shootSpeed = 5.0f;
+    [SerializeField] protected float shootSpeed = 50.0f;
     [SerializeField] protected float targetLoadSpeed = 1.0f;
     [SerializeField] protected EnemyCtrl target;
     [SerializeField] protected float rotationSpeed = 2.0f;

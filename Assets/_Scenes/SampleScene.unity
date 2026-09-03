@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 368583276}
   currentFirePoint: 0
-  shootSpeed: 5
+  shootSpeed: 0.1
   targetLoadSpeed: 1
   target: {fileID: 0}
   rotationSpeed: 2
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 368583274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.88, y: 0, z: -11.92}
+  m_LocalPosition: {x: -60.35, y: 0, z: -8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawning
   enemyManagerCtrl: {fileID: 2003892419}
-  spawnSpeed: 1
+  spawnSpeed: 3
   maxSpawn: 10
 --- !u!1001 &1043706376
 PrefabInstance:
