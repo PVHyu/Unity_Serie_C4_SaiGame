@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyCtrl : SaiMonoBehaviour
+public abstract class EnemyCtrl : PoolObject
 {
     [SerializeField] protected Transform model;
     [SerializeField] protected NavMeshAgent agent;
@@ -53,4 +53,6 @@ public class EnemyCtrl : SaiMonoBehaviour
         this.towerTargetable = transform.GetComponentInChildren<TowerTargetable>();
         Debug.Log(transform.name + ": LoadAnimator", gameObject);
     }
+
+    
 }
