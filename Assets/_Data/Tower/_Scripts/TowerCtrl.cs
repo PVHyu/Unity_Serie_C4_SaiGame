@@ -12,8 +12,11 @@ public class TowerCtrl : SaiMonoBehaviour
     public TowerTargeting TowerTargeting => towerTargeting;
     [SerializeField] protected BulletSpawner bulletSpawner;
     public BulletSpawner BulletSpawner => bulletSpawner;
+    protected string bulletName = "Bullet";
     [SerializeField] protected Bullet bullet;
     public Bullet Bullet => bullet; 
+    [SerializeField] protected BulletPrefabs bulletPrefabs;
+    public BulletPrefabs BulletPrefabs => bulletPrefabs;
 
     [SerializeField] protected List<FirePoint> firePoints = new();
     public List<FirePoint> FirePoints => firePoints;
@@ -30,8 +33,8 @@ public class TowerCtrl : SaiMonoBehaviour
         this.LoadModel();
         this.LoadTowerTargeting();
         this.LoadBulletSpawner();
-        this.LoadBullet();
         this.LoadFirePoints();
+        this.LoadBulletPrefabs();
     }
 
     protected virtual void LoadModel()
@@ -42,7 +45,7 @@ public class TowerCtrl : SaiMonoBehaviour
         this.rotator = this.model.Find("Head");
         Debug.Log(transform.name + ": LoadModel", gameObject);
     }
-    
+
     protected virtual void LoadTowerTargeting()
     {
         if(this.towerTargeting != null) return;
@@ -58,7 +61,15 @@ public class TowerCtrl : SaiMonoBehaviour
     protected virtual void LoadBullet()
     {
         if(this.bullet != null) return;
-        this.bullet = this.transform.GetComponentInChildren<Bullet>();
+        this.bullet = this.bulletPrefabs.GetByName(this.bulletName);
+    }
+  
+    protected virtual void LoadBulletPrefabs()
+    {
+        if(this.bulletPrefabs != null) return;
+        Debug.Log("BulletPrefabs is not assigned in " + transform.name, gameObject);
+        this.bulletPrefabs = GameObject.FindAnyObjectByType<BulletPrefabs>();
+        this.LoadBullet();
     }
 
     protected virtual void LoadFirePoints()
