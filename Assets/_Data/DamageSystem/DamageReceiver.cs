@@ -7,6 +7,12 @@ public abstract class DamageReceiver : SaiMonoBehaviour
     protected int maxHP = 10;
     protected int currentHP = 10;
     protected bool isDead = false;
+    [SerializeField] protected bool inMortal = false;
+
+    protected virtual void OnEnable()
+    {
+        this.OnReborn();
+    }
 
     public virtual int Deduct(int hp)
     {
@@ -36,5 +42,11 @@ public abstract class DamageReceiver : SaiMonoBehaviour
     protected virtual void OnHurt()
     {
         //For Override
+    }
+
+    protected virtual void OnReborn()
+    {
+        this.currentHP = this.maxHP;
+        // this.isDead = false;
     }
 }

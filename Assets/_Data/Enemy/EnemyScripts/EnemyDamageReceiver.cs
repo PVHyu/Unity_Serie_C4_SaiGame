@@ -50,4 +50,10 @@ public class EnemyDamageReceiver : DamageReceiver
     {
         this.enemyCtrl.Despawn.DoDespawn();
     }
+
+    protected override void OnReborn()
+    {
+        base.OnReborn();
+        this.capsuleCollider.enabled = true;
+    }
 }
