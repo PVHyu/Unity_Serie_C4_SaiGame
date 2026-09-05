@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 368583276}
   currentFirePoint: 0
-  shootSpeed: 0.1
+  shootSpeed: 0.2
   targetLoadSpeed: 1
   target: {fileID: 0}
   rotationSpeed: 2
@@ -354,6 +354,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 883928205}
     m_Modifications:
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2589727905329157522, guid: e4052000f17aa4c43b1e429972460727, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -642,7 +650,7 @@ Transform:
   m_GameObject: {fileID: 238762159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.35, y: 0, z: -8.6}
+  m_LocalPosition: {x: -60, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -945,7 +953,7 @@ Transform:
   m_GameObject: {fileID: 368583274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.35, y: 0, z: -8.6}
+  m_LocalPosition: {x: -46.96, y: 0, z: -16.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1374,7 +1382,7 @@ Transform:
   m_GameObject: {fileID: 557177478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: -21.15}
+  m_LocalPosition: {x: -2.29, y: -0.2, z: -21.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3052,6 +3060,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 440877029}
     m_Modifications:
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2589727905329157522, guid: e4052000f17aa4c43b1e429972460727, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3664,7 +3680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 238762160}
   currentFirePoint: 0
-  shootSpeed: 0.1
+  shootSpeed: 0.2
   targetLoadSpeed: 1
   target: {fileID: 0}
   rotationSpeed: 2
@@ -3768,7 +3784,7 @@ Transform:
   m_GameObject: {fileID: 1953363120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.23, z: 0.14999962}
+  m_LocalPosition: {x: -0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4165,6 +4181,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 557177479}
     m_Modifications:
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434351876747090292, guid: e4052000f17aa4c43b1e429972460727, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2589727905329157522, guid: e4052000f17aa4c43b1e429972460727, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

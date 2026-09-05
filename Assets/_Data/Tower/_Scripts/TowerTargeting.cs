@@ -1,19 +1,20 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
-
 public class TowerTargeting : SaiMonoBehaviour
 {
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody rigid;
+
     [SerializeField] protected EnemyCtrl nearest;
     public EnemyCtrl Nearest => nearest;
+    [SerializeField] protected LayerMask obstacleLayerMask = -1;
+
     [SerializeField] protected List<EnemyCtrl> enemies = new();
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         this.FindNearest();
         this.RemoveDeadEnemy();
@@ -38,45 +39,58 @@ public class TowerTargeting : SaiMonoBehaviour
 
     protected virtual void LoadSphereCollider()
     {
-        if(this.sphereCollider != null) return;
+        if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.radius = 5f;
+        this.sphereCollider.radius = 15f;
         this.sphereCollider.isTrigger = true;
         Debug.Log(transform.name + ": LoadSphereCollider", gameObject);
     }
 
     protected virtual void LoadRigidbody()
     {
-        if(this.rigid != null) return;
+        if (this.rigid != null) return;
         this.rigid = GetComponent<Rigidbody>();
         this.rigid.useGravity = false;
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
-    
+
     protected virtual void AddEnemy(Collider collider)
     {
-        if(collider.name != Const.TOWER_TARGETTABLE) return;
+        if (collider.name != Const.TOWER_TARGETTABLE) return;
         EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
-        if(enemyCtrl.EnemyDamageReceiver.IsDead()) return;
+
+        if (enemyCtrl.EnemyDamageReceiver.IsDead()) return;
+
         this.enemies.Add(enemyCtrl);
-        Debug.Log("AddEnemy: " + collider.name);
     }
+
 
     protected virtual void RemoveEnemy(Collider collider)
     {
-        EnemyCtrl enemyCtrl = collider.transform.parent.GetComponent<EnemyCtrl>();
-        this.enemies.Remove(enemyCtrl);
-        Debug.Log("RemoveEnemy: " + collider.name);
+        if (collider.name != Const.TOWER_TARGETTABLE) return;
+
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
+        {
+            if (collider.transform.parent.name == enemyCtrl.name)
+            {
+                if (enemyCtrl == this.nearest) this.nearest = null;
+
+                this.enemies.Remove(enemyCtrl);
+                return;
+            }
+        }
     }
 
     protected virtual void FindNearest()
     {
         float nearestDistance = Mathf.Infinity;
         float enemyDistance;
-        foreach(EnemyCtrl enemyCtrl in this.enemies)
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
+            if (!this.CanSeeTarget(enemyCtrl.TowerTargetable.SphereCollider)) continue;
+
             enemyDistance = Vector3.Distance(transform.position, enemyCtrl.transform.position);
-            if(enemyDistance < nearestDistance)
+            if (enemyDistance < nearestDistance)
             {
                 nearestDistance = enemyDistance;
                 this.nearest = enemyCtrl;
@@ -84,18 +98,37 @@ public class TowerTargeting : SaiMonoBehaviour
         }
     }
 
+    protected virtual bool CanSeeTarget(Collider target)
+{
+    Vector3 startPos = transform.position + Vector3.up * 1.0f;
+    Vector3 targetPos = target.bounds.center;
+    Vector3 directionToTarget = targetPos - startPos;
+    float distanceToTarget = directionToTarget.magnitude;
+    if (Physics.Raycast(startPos, directionToTarget, out RaycastHit hitInfo, distanceToTarget, obstacleLayerMask))
+    {
+        if (hitInfo.collider == target)
+        {
+            Debug.DrawRay(startPos, directionToTarget, Color.green);
+            return true;
+        }
+        Debug.Log("Raycast bị chặn bởi: " + hitInfo.collider.name, hitInfo.collider.gameObject);
+        Debug.DrawRay(startPos, directionToTarget.normalized * hitInfo.distance, Color.red);
+        return false;
+    }
+    Debug.DrawRay(startPos, directionToTarget, Color.green);
+    return true;
+}
+
     protected virtual void RemoveDeadEnemy()
     {
-        for(int i = 0; i < this.enemies.Count; i++)
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
         {
-            if(this.enemies[i].EnemyDamageReceiver.IsDead())
+            if (enemyCtrl.EnemyDamageReceiver.IsDead())
             {
-                if(this.enemies[i] == this.nearest) this.nearest = null;
-                this.enemies.RemoveAt(i);
-                i--;
+                if (enemyCtrl == this.nearest) this.nearest = null;
+                this.enemies.Remove(enemyCtrl);
+                return;
             }
         }
     }
 }
-
-

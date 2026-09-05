@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class TowerTargetable : SaiMonoBehaviour
 {
     [SerializeField] protected SphereCollider sphereCollider;
+    public SphereCollider SphereCollider => sphereCollider;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -17,8 +18,9 @@ public class TowerTargetable : SaiMonoBehaviour
     {
         if(this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.radius = 5f;
+        this.sphereCollider.radius = 1f;
         this.sphereCollider.isTrigger = true;
+        this.sphereCollider.center = new Vector3(0, 1, 0);
         Debug.Log(transform.name + ": LoadSphereCollider", gameObject);
     }
 }
