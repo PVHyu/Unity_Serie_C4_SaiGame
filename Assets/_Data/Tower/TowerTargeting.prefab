@@ -80,7 +80,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1144979854129623806
 MonoBehaviour:
@@ -93,8 +93,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5763ada69116cc547ba0206187b039de, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerTargetting
+  m_EditorClassIdentifier: Assembly-CSharp::TowerTargeting
   sphereCollider: {fileID: 8449731695216334138}
   rigid: {fileID: 5359634843675134319}
   nearest: {fileID: 0}
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   enemies: []
