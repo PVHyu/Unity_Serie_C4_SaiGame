@@ -99,25 +99,25 @@ public class TowerTargeting : SaiMonoBehaviour
     }
 
     protected virtual bool CanSeeTarget(Collider target)
-{
-    Vector3 startPos = transform.position + Vector3.up * 1.0f;
-    Vector3 targetPos = target.bounds.center;
-    Vector3 directionToTarget = targetPos - startPos;
-    float distanceToTarget = directionToTarget.magnitude;
-    if (Physics.Raycast(startPos, directionToTarget, out RaycastHit hitInfo, distanceToTarget, obstacleLayerMask))
     {
-        if (hitInfo.collider == target)
+        Vector3 startPos = transform.position + Vector3.up * 1.0f;
+        Vector3 targetPos = target.bounds.center;
+        Vector3 directionToTarget = targetPos - startPos;
+        float distanceToTarget = directionToTarget.magnitude;
+        if (Physics.Raycast(startPos, directionToTarget, out RaycastHit hitInfo, distanceToTarget, obstacleLayerMask))
         {
-            Debug.DrawRay(startPos, directionToTarget, Color.green);
-            return true;
+            if (hitInfo.collider == target)
+            {
+                Debug.DrawRay(startPos, directionToTarget, Color.green);
+                return true;
+            }
+            Debug.Log("Raycast bị chặn bởi: " + hitInfo.collider.name, hitInfo.collider.gameObject);
+            Debug.DrawRay(startPos, directionToTarget.normalized * hitInfo.distance, Color.red);
+            return false;
         }
-        Debug.Log("Raycast bị chặn bởi: " + hitInfo.collider.name, hitInfo.collider.gameObject);
-        Debug.DrawRay(startPos, directionToTarget.normalized * hitInfo.distance, Color.red);
-        return false;
+        Debug.DrawRay(startPos, directionToTarget, Color.green);
+        return true;
     }
-    Debug.DrawRay(startPos, directionToTarget, Color.green);
-    return true;
-}
 
     protected virtual void RemoveDeadEnemy()
     {
