@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5155676787238396003}
   - component: {fileID: 8207962767217627133}
   - component: {fileID: 1092201616061378411}
+  - component: {fileID: 7273718495337596800}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274130171577955815}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.23281, y: 2.1244402, z: 0.5}
   m_LocalScale: {x: 80, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,9 +107,23 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7273718495337596800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274130171577955815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747c55c85e97e84458641817686c9f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallDamageReceiver
+  isImmotal: 1
+  boxCollider: {fileID: 1092201616061378411}

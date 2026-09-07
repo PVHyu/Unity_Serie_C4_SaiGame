@@ -7,7 +7,7 @@ public abstract class DamageReceiver : SaiMonoBehaviour
     protected int maxHP = 10;
     protected int currentHP = 10;
     protected bool isDead = false;
-    [SerializeField] protected bool inMortal = false;
+    [SerializeField] protected bool isImmotal = false;
 
     protected virtual void OnEnable()
     {

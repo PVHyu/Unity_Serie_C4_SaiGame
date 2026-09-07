@@ -650,7 +650,7 @@ Transform:
   m_GameObject: {fileID: 238762159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60, y: 0, z: -5}
+  m_LocalPosition: {x: -56.12, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de743b7e427b07409bd2fdec28b5486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageReceiver
-  inMortal: 0
+  isImmotal: 0
   capsuleCollider: {fileID: 1515875465}
   enemyCtrl: {fileID: 883928208}
 --- !u!1001 &1554035057
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de743b7e427b07409bd2fdec28b5486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageReceiver
-  inMortal: 0
+  isImmotal: 0
   capsuleCollider: {fileID: 1953363123}
   enemyCtrl: {fileID: 557177482}
 --- !u!136 &1953363123
@@ -4000,7 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de743b7e427b07409bd2fdec28b5486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageReceiver
-  inMortal: 0
+  isImmotal: 0
   capsuleCollider: {fileID: 2111258555}
   enemyCtrl: {fileID: 440877032}
 --- !u!136 &2111258555
