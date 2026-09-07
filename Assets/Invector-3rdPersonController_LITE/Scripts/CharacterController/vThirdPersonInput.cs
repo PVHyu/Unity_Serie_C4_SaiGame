@@ -61,7 +61,7 @@ namespace Invector.vCharacterController
         {
             if (tpCamera == null)
             {
-                tpCamera = FindFirstObjectByType<vThirdPersonCamera>();
+                tpCamera = GameObject.FindAnyObjectByType<vThirdPersonCamera>();
                 if (tpCamera == null)
                     return;
                 if (tpCamera)
