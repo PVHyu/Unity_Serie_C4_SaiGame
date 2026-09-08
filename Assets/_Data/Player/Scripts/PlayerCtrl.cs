@@ -2,7 +2,7 @@ using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.Animations.Rigging;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerCtrl : SaiSingleton<PlayerCtrl>
 {
@@ -16,8 +16,8 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
     [SerializeField] protected CrosshairPointer crosshairPointer;
     public CrosshairPointer CrosshairPointer => crosshairPointer;
 
-    // [SerializeField] protected Rig aimingRig;
-    // public Rig AimingRig => aimingRig;
+    [SerializeField] protected Rig aimingRig;
+    public Rig AimingRig => aimingRig;
 
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
@@ -34,7 +34,7 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
         this.LoadThirdPersonCtrl();
         this.LoadThirdPersonCamera();
         this.LoadCrosshairPointer();
-        // this.LoadAimingRig();
+        this.LoadAimingRig();
         this.LoadAnimator();
         // this.LoadWeapons();
         // this.LoadLevel();
@@ -61,12 +61,12 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
         Debug.Log(transform.name + ": LoadAnimator", gameObject);
     }
 
-    // protected virtual void LoadAimingRig()
-    // {
-    //     if (this.aimingRig != null) return;
-    //     this.aimingRig = transform.Find("Model").Find("AimingRig").GetComponent<Rig>();
-    //     Debug.Log(transform.name + ": LoadAimingRig", gameObject);
-    // }
+    protected virtual void LoadAimingRig()
+    {
+        if (this.aimingRig != null) return;
+        this.aimingRig = transform.Find("Model")?.Find("AimingRig")?.GetComponent<Rig>();
+        Debug.Log(transform.name + ": LoadAimingRig", gameObject);
+    }
 
 
     protected virtual void LoadCrosshairPointer()
