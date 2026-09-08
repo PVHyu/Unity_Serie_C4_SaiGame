@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 public class PlayerAiming : PlayerAbstract
@@ -25,12 +27,14 @@ public class PlayerAiming : PlayerAbstract
         CrosshairPointer crosshairPointer = this.playerCtrl.CrosshairPointer;
         this.playerCtrl.ThirdPersonController.RotateToPosition(crosshairPointer.transform.position);
         this.playerCtrl.ThirdPersonController.isSprinting = false;
+        // playerCtrl.transform.Find("Model").Find("AimingRig").Find("AimingRightHand").gameObject.SetActive(true);
         this.playerCtrl.AimingRig.weight = 1;
     }
 
     protected virtual void LookFar()
     {
         this.playerCtrl.ThirdPersonCamera.defaultDistance = this.farLookDistance;
-        // this.playerCtrl.AimingRig.weight = 0;
+        this.playerCtrl.AimingRig.weight = 0;
+        // playerCtrl.transform.Find("Model").Find("AimingRig").Find("AimingRightHand").gameObject.SetActive(false);
     }
 }
