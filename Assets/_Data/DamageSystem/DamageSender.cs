@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class DamageSender : SaiMonoBehaviour
 {
     [SerializeField] protected Rigidbody rigidbody;
-    [SerializeField] protected int damage = 1;
+    [SerializeField] protected int damage = 5;
 
     protected override void LoadComponents()
     {
