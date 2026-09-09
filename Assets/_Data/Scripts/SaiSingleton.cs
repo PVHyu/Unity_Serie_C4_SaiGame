@@ -24,7 +24,7 @@ public abstract class SaiSingleton<T> : SaiMonoBehaviour where T :SaiMonoBehavio
         if(_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
             return;
         }
         if(_instance != this) Debug.LogError("Another instance of SingletonExample already exist");

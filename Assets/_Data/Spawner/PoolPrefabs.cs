@@ -19,9 +19,10 @@ public abstract class PoolPrefabs<T> : SaiMonoBehaviour where T : PoolObject
         foreach (Transform child in transform)
         {
             T classPrefab = child.GetComponent<T>();
+            Debug.Log("LoadPrefabs" + classPrefab.GetName(), gameObject);
             if (classPrefab != null) this.prefabs.Add(classPrefab);
         }
-        Debug.Log(transform.name + ": LoadPrefabs", gameObject);
+        
     }
 
     protected virtual void HidePrefabs()
