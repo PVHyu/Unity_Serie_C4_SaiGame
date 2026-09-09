@@ -22,8 +22,8 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
 
-    // [SerializeField] protected Weapons weapons;
-    // public Weapons Weapons => weapons;
+    [SerializeField] protected Weapons weapons;
+    public Weapons Weapons => weapons;
 
     // [SerializeField] protected LevelAbstract level;
     // public LevelAbstract Level => level;
@@ -36,7 +36,7 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
         this.LoadCrosshairPointer();
         this.LoadAimingRig();
         this.LoadAnimator();
-        // this.LoadWeapons();
+        this.LoadWeapons();
         // this.LoadLevel();
     }
 
@@ -47,12 +47,12 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
     //     Debug.Log(transform.name + ": LoadLevel", gameObject);
     // }
 
-    // protected virtual void LoadWeapons()
-    // {
-    //     if (this.weapons != null) return;
-    //     this.weapons = GetComponentInChildren<Weapons>();
-    //     Debug.Log(transform.name + ": LoadWeapons", gameObject);
-    // }
+    protected virtual void LoadWeapons()
+    {
+        if (this.weapons != null) return;
+        this.weapons = GetComponentInChildren<Weapons>();
+        Debug.Log(transform.name + ": LoadWeapons", gameObject);
+    }
 
     protected virtual void LoadAnimator()
     {

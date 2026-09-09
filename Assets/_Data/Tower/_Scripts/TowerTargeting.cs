@@ -41,7 +41,7 @@ public class TowerTargeting : SaiMonoBehaviour
     {
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.radius = 15f;
+        this.sphereCollider.radius = 10f;
         this.sphereCollider.isTrigger = true;
         Debug.Log(transform.name + ": LoadSphereCollider", gameObject);
     }
@@ -111,7 +111,7 @@ public class TowerTargeting : SaiMonoBehaviour
                 Debug.DrawRay(startPos, directionToTarget, Color.green);
                 return true;
             }
-            Debug.Log("Raycast bị chặn bởi: " + hitInfo.collider.name, hitInfo.collider.gameObject);
+            // Debug.Log("Raycast bị chặn bởi: " + hitInfo.collider.name, hitInfo.collider.gameObject);
             Debug.DrawRay(startPos, directionToTarget.normalized * hitInfo.distance, Color.red);
             return false;
         }

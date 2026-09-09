@@ -11,6 +11,7 @@ namespace Invector.vCharacterController
         /// <summary>
         /// ToolBar Class
         /// </summary>
+        [System.Serializable]
         public class ToolBar
         {
             public string title;

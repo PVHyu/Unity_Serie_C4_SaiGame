@@ -20,6 +20,7 @@ public class CrosshairPointer : SaiMonoBehaviour
         {
             transform.position = hit.point;
             this.hitObj = hit.collider;
+            // Debug.Log($"Crosshair trúng: {hit.collider.name} (Tag: {hit.collider.tag}, Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)})", hit.collider.gameObject);
         }
     }
 }
