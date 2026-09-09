@@ -21,7 +21,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
 
     protected virtual void AddTestItems()
     {
-        InventoryCtrl inventoryCtrl = this.GetByName("Monies");
+        InventoryCtrl inventoryCtrl = this.GetByName(InvCodeName.Monies);
 
         ItemInventory item = new();
         item.itemName = "Gold";
@@ -45,7 +45,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         }
     }    
 
-    public virtual InventoryCtrl GetByName(string inventoryName)
+    public virtual InventoryCtrl GetByName(InvCodeName inventoryName)
     {
         foreach(InventoryCtrl inventory in this.inventories)
         {
