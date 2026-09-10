@@ -20,7 +20,6 @@ public abstract class InventoryCtrl : SaiMonoBehaviour
         }
 
         itemExist.itemCount += item.itemCount;
-        // this.items.Add(item);
     }
 
     // public virtual bool RemoveItem(ItemInventory item)

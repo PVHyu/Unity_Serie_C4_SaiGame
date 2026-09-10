@@ -8,9 +8,9 @@ public class ItemInventory
     public int ItemID => itemId;
 
     // protected ItemProfileSO itemProfile;
-    [field: SerializeField] public ItemProfileSO ItemProfile {get; set;}
+    public ItemProfileSO ItemProfile {get; set;}
     
-    [SerializeField] public string itemName;
+    protected string itemName;
     
     public int itemCount;
 

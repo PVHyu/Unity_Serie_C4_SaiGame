@@ -64,4 +64,14 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         }
         return null;
     }
+
+    public virtual InventoryCtrl Monies()
+    {
+        return this.GetByName(InvCodeName.Monies);
+    }
+
+    public virtual InventoryCtrl Items()
+    {
+        return this.GetByName(InvCodeName.Items);
+    }
 }
