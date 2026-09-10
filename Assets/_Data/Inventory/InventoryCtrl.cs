@@ -11,16 +11,16 @@ public abstract class InventoryCtrl : SaiMonoBehaviour
 
     public virtual void AddItem(ItemInventory item)
     {
-        // ItemInventory itemExist = this.FindItem(item.ItemProfile.itemCode);
-        // if (!item.ItemProfile.isStackable || itemExist == null)
-        // {
-        //     item.SetId(Random.Range(0, 999999999));
-        //     this.items.Add(item);
-        //     return;
-        // }
+        ItemInventory itemExist = this.FindItem(item.ItemProfile.itemCode);
+        if (!item.ItemProfile.isStackable || itemExist == null)
+        {
+            item.SetId(Random.Range(0, 999999999));
+            this.items.Add(item);
+            return;
+        }
 
-        // itemExist.itemCount += item.itemCount;
-        this.items.Add(item);
+        itemExist.itemCount += item.itemCount;
+        // this.items.Add(item);
     }
 
     // public virtual bool RemoveItem(ItemInventory item)
@@ -33,15 +33,15 @@ public abstract class InventoryCtrl : SaiMonoBehaviour
     //     return true;
     // }
 
-    // public virtual ItemInventory FindItem(ItemCode itemCode)
-    // {
-    //     foreach (ItemInventory itemInventory in this.items)
-    //     {
-    //         if (itemInventory.ItemProfile.itemCode == itemCode) return itemInventory;
-    //     }
+    public virtual ItemInventory FindItem(ItemCode itemCode)
+    {
+        foreach (ItemInventory itemInventory in this.items)
+        {
+            if (itemInventory.ItemProfile.itemCode == itemCode) return itemInventory;
+        }
 
-    //     return null;
-    // }
+        return null;
+    }
 
     // public virtual ItemInventory FindItemNotEmpty(ItemCode itemCode)
     // {

@@ -5,6 +5,8 @@ using UnityEngine;
 public class InventoryManager : SaiSingleton<InventoryManager>
 {
     [SerializeField] protected List<InventoryCtrl> inventories;
+    [SerializeField] protected List<ItemProfileSO> itemProfiles;
+
 
     protected override void LoadComponents()
     {
@@ -23,15 +25,15 @@ public class InventoryManager : SaiSingleton<InventoryManager>
     {
         InventoryCtrl inventoryCtrl = this.GetByName(InvCodeName.Monies);
 
-        ItemInventory item = new();
-        item.itemName = "Gold";
-        item.itemCount = 11;
-        inventoryCtrl.AddItem(item);
+        ItemInventory gold = new();
+        gold.ItemProfile = this.GetProfileByCode(ItemCode.Gold);
+        gold.itemCount = 11;
+        inventoryCtrl.AddItem(gold);
 
-        ItemInventory item2 = new();
-        item2.itemName = "Gold";
-        item2.itemCount = 2;
-        inventoryCtrl.AddItem(item2);
+        ItemInventory gold2 = new();
+        gold2.ItemProfile = this.GetProfileByCode(ItemCode.Gold);
+        gold2.itemCount = 2;
+        inventoryCtrl.AddItem(gold2);
     }
 
     protected virtual void LoadInventories()
@@ -50,6 +52,15 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         foreach(InventoryCtrl inventory in this.inventories)
         {
             if(inventory.GetName() == inventoryName) return inventory;
+        }
+        return null;
+    }
+
+    public virtual ItemProfileSO GetProfileByCode(ItemCode itemCodeName)
+    {
+        foreach(ItemProfileSO itemProfile in this.itemProfiles)
+        {
+            if(itemProfile.itemCode == itemCodeName) return itemProfile;
         }
         return null;
     }

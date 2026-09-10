@@ -3351,6 +3351,9 @@ MonoBehaviour:
   inventories:
   - {fileID: 1526663700}
   - {fileID: 456611012}
+  itemProfiles:
+  - {fileID: 11400000, guid: b3d10985b586cd141bf9f7d8d832226f, type: 2}
+  - {fileID: 11400000, guid: 1eadd9e9767a7a44ea94b49bdb5060e5, type: 2}
 --- !u!4 &1108195196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3390165133903598733, guid: 608d242aa4c29b54986994478203a5f0, type: 3}
