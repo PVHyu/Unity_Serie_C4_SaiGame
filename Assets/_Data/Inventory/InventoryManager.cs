@@ -25,22 +25,25 @@ public class InventoryManager : SaiSingleton<InventoryManager>
     {
         InventoryCtrl inventoryCtrl = this.GetByName(InvCodeName.Monies);
 
-        ItemInventory gold = new();
-        gold.ItemProfile = this.GetProfileByCode(ItemCode.Gold);
-        gold.itemName = gold.ItemProfile.itemName;
-        gold.itemCount = 4;
+        ItemInventory gold = new ItemInventory
+            {
+                ItemProfile = this.GetProfileByCode(ItemCode.Gold),
+                itemName = this.GetProfileByCode(ItemCode.Gold).itemName,
+                itemCount = 1,
+            };
         inventoryCtrl.AddItem(gold);
 
         InventoryCtrl items = this.GetByName(InvCodeName.Items);
         for(int i = 0; i < 20; i++)
         {
-            ItemInventory wand = new();
-            wand.ItemProfile = this.GetProfileByCode(ItemCode.Wand);
-            wand.itemName = wand.ItemProfile.itemName;
-            wand.itemCount = 1;
+            ItemInventory wand = new ItemInventory
+            {
+                ItemProfile = this.GetProfileByCode(ItemCode.Wand), 
+                itemName = this.GetProfileByCode(ItemCode.Wand).itemName,
+                itemCount = 1,
+            };
             items.AddItem(wand);
         }
-        
     }
 
     protected virtual void LoadInventories()

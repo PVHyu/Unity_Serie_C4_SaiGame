@@ -4,15 +4,7 @@ using UnityEngine;
 [Serializable]
 public class ItemInventory
 {
-    protected int itemId;
-    public int ItemID
-    {
-        get
-        {
-            this.itemId = UnityEngine.Random.Range(1, 999999999);
-            return this.itemId;
-        }
-    }
+    public int ItemID {get; set;}
 
     // protected ItemProfileSO itemProfile;
     public ItemProfileSO ItemProfile {get; set;}
@@ -30,7 +22,7 @@ public class ItemInventory
 
     public virtual void SetId(int id)
     {
-        this.itemId = id;
+        this.ItemID = id;
     }
 
     public virtual void SetName(string name)

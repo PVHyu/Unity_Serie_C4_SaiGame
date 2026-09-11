@@ -62,12 +62,15 @@ public class InventoryUI : SaiSingleton<InventoryUI>
         InventoryCtrl itemInvCtrl = InventoryManager.Instance.Items();
         foreach(ItemInventory itemInventory in itemInvCtrl.Items)
         {
-            ButtonItemInventory newItemUI = this.GetExistItem(itemInventory);
-            if(newItemUI == null)
+            ButtonItemInventory newButtonItem = this.GetExistItem(itemInventory);
+            if(newButtonItem == null)
             {
-                newItemUI = Instantiate(this.defaultItemInventoryUI);
-                newItemUI.transform.parent = this.defaultItemInventoryUI.transform.parent;
-                newItemUI.gameObject.SetActive(true);
+                newButtonItem = Instantiate(this.defaultItemInventoryUI);
+                newButtonItem.transform.SetParent(this.defaultItemInventoryUI.transform.parent);
+                newButtonItem.SetItem(itemInventory);
+                newButtonItem.transform.localScale = new Vector3(1, 1, 1);
+                newButtonItem.gameObject.SetActive(true);
+                this.buttonItems.Add(newButtonItem);
             }
         }
     }
@@ -76,7 +79,7 @@ public class InventoryUI : SaiSingleton<InventoryUI>
     {
         foreach(ButtonItemInventory itemInvUI in this.buttonItems)
         {
-            
+            if(itemInvUI.ItemInventory.ItemID == itemInventory.ItemID) return itemInvUI;
         }
         return null;
     }
