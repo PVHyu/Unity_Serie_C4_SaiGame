@@ -5,12 +5,19 @@ using UnityEngine;
 public class ItemInventory
 {
     protected int itemId;
-    public int ItemID => itemId;
+    public int ItemID
+    {
+        get
+        {
+            this.itemId = UnityEngine.Random.Range(1, 999999999);
+            return this.itemId;
+        }
+    }
 
     // protected ItemProfileSO itemProfile;
     public ItemProfileSO ItemProfile {get; set;}
     
-    protected string itemName;
+    public string itemName;
     
     public int itemCount;
 
