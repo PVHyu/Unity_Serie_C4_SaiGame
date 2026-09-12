@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemProfileSO
   itemCode: 1
   itemName: Gold
-  isStackable: 1
+  isStackable: 0
