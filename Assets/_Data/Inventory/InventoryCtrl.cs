@@ -38,7 +38,6 @@ public abstract class InventoryCtrl : SaiMonoBehaviour
         {
             if (itemInventory.ItemProfile.itemCode == itemCode) return itemInventory;
         }
-
         return null;
     }
 
