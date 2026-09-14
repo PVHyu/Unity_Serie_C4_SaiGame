@@ -6,6 +6,6 @@ public class InventoryItems : InventoryCtrl
 {
     public override InvCodeName GetName()
     {
-         return InvCodeName.Items;
+        return InvCodeName.Items;
     }
 }
