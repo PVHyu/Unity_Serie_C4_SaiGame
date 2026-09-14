@@ -27,7 +27,6 @@ public abstract class AttackAbstract : SaiMonoBehaviour
         if (this.spawner != null) return;
         this.spawner = GameObject.FindAnyObjectByType<EffectSpawner>();
         this.prefabs = GameObject.FindAnyObjectByType<EffectPrefabs>();
-        Debug.Log(transform.name + ": LoadEffectSpawner", gameObject);
     }
 
 
