@@ -6,7 +6,7 @@ public class ButtonItemInventory : ButttonAbstract
     [SerializeField] protected TextMeshProUGUI txtItemName;
     [SerializeField] protected TextMeshProUGUI txtItemCount;
 
-    protected ItemInventory itemInventory;
+    [SerializeField] protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
 
     protected virtual void FixedUpdate()
@@ -49,5 +49,6 @@ public class ButtonItemInventory : ButttonAbstract
     {
         this.txtItemName.text = this.itemInventory.itemName;
         this.txtItemCount.text = this.itemInventory.itemCount.ToString();
+        if(this.itemInventory.itemCount == 0) Destroy(gameObject);
     }
 }

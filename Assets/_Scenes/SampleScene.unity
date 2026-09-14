@@ -4484,6 +4484,7 @@ MonoBehaviour:
   itemProfiles:
   - {fileID: 11400000, guid: b3d10985b586cd141bf9f7d8d832226f, type: 2}
   - {fileID: 11400000, guid: 1eadd9e9767a7a44ea94b49bdb5060e5, type: 2}
+  - {fileID: 11400000, guid: 13c9e48e06341684d8d7de2a5c23c53b, type: 2}
 --- !u!114 &1054127692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6230,6 +6231,9 @@ MonoBehaviour:
   button: {fileID: 1627115830}
   txtItemName: {fileID: 1431541371}
   txtItemCount: {fileID: 1550751934}
+  itemInventory:
+    itemName: 
+    itemCount: 0
 --- !u!114 &1631562115 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8051106828586211542, guid: 608d242aa4c29b54986994478203a5f0, type: 3}
