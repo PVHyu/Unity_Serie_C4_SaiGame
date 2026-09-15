@@ -5,7 +5,9 @@ using UnityEngine;
 public class InventoryUI : SaiSingleton<InventoryUI>
 {
     protected bool isShow = true;
-    bool IsShow => isShow;
+    protected bool IsShow => isShow;
+
+    [SerializeField] protected Transform showHide;
 
     [SerializeField] protected ButtonItemInventory defaultItemInventoryUI;
     protected List<ButtonItemInventory> buttonItems = new();
@@ -13,6 +15,11 @@ public class InventoryUI : SaiSingleton<InventoryUI>
     protected virtual void FixedUpdate()
     {
         this.ItemUpdating();
+    }
+
+    protected virtual void LateUpdate()
+    {
+        this.HotkeyToogleInventory();
     }
 
     protected override void Start()
@@ -26,6 +33,13 @@ public class InventoryUI : SaiSingleton<InventoryUI>
     {
         base.LoadComponents();
         this.LoadButtonItemInventory();
+        this.LoadShowHide();
+    }
+
+    protected virtual void LoadShowHide()
+    {
+        if(this.showHide != null) return;
+        this.showHide = transform.Find("ShowHide");
     }
 
     protected virtual void LoadButtonItemInventory()
@@ -37,12 +51,12 @@ public class InventoryUI : SaiSingleton<InventoryUI>
     public virtual void Show()
     {
         this.isShow = true;
-        gameObject.SetActive(this.isShow);
+        this.showHide.gameObject.SetActive(this.isShow);
     }
 
     public virtual void Hide()
     {
-        gameObject.SetActive(false);
+        this.showHide.gameObject.SetActive(false);
         this.isShow = false;
     }
 
@@ -59,6 +73,9 @@ public class InventoryUI : SaiSingleton<InventoryUI>
 
     protected virtual void ItemUpdating()
     {
+        if(!this.isShow) return;
+        Debug.Log("Item Updating");
+
         InventoryCtrl itemInvCtrl = InventoryManager.Instance.Items();
         foreach(ItemInventory itemInventory in itemInvCtrl.Items)
         {
@@ -83,5 +100,10 @@ public class InventoryUI : SaiSingleton<InventoryUI>
             if(itemInvUI.ItemInventory.ItemID == itemInventory.ItemID) return itemInvUI;
         }
         return null;
+    }
+
+    protected virtual void HotkeyToogleInventory()
+    {
+        if(InputHotkeys.Instance.IsToogleInventoryUI) this.Toggle();
     }
 }
