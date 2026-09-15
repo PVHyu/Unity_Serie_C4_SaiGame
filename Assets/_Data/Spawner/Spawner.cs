@@ -1,55 +1,73 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class Spawner<T> : SaiMonoBehaviour where T : PoolObject
 {
     [SerializeField] protected int spawnCount = 0;
-    [SerializeField] protected PoolHolder poolHolder;
+    [SerializeField] protected Transform poolHolder;
+
+    [SerializeField] protected PoolPrefabs<T> poolPrefabs;
+    public PoolPrefabs<T> PoolPrefabs => poolPrefabs;
+
     [SerializeField] protected List<T> inPoolObjs = new();
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadPoolHolder();
+        this.LoadPoolPrefabs();
     }
 
     protected virtual void LoadPoolHolder()
     {
-        if(this.poolHolder != null) return;
-        this.poolHolder = this.transform.GetComponentInChildren<PoolHolder>(); 
+        if (this.poolHolder != null) return;
+        this.poolHolder = transform.Find("PoolHolder");
+        if (this.poolHolder == null)
+        {
+            this.poolHolder = new GameObject("PoolHolder").transform;
+            this.poolHolder.parent = transform;
+        }
+        Debug.Log(transform.name + ": LoadPoolHolder", gameObject);
     }
 
-     public virtual T Spawn(T prefab)
+    protected virtual void LoadPoolPrefabs()
+    {
+        if (this.poolPrefabs != null) return;
+        this.poolPrefabs = GetComponentInChildren<PoolPrefabs<T>>();
+        Debug.Log(transform.name + ": LoadPoolPrefabs", gameObject);
+    }
+
+    public virtual T Spawn(T prefab)
     {
         T newObject = this.GetObjFromPool(prefab);
-        if(newObject == null)
+        if (newObject == null)
         {
             newObject = Instantiate(prefab);
             this.spawnCount++;
             this.UpdateName(prefab.transform, newObject.transform);
         }
 
-        if(this.poolHolder != null) newObject.transform.SetParent(this.poolHolder.transform);
+        if (this.poolHolder != null) newObject.transform.parent = this.poolHolder.transform;
 
         return newObject;
     }
 
-    public virtual T Spawn(T prefab, Vector3 position)
+    public virtual T Spawn(T prefab, Vector3 postion)
     {
-        T newObject = Spawn(prefab);
-        newObject.transform.position = position;
-        return newObject;
+        T newBullet = this.Spawn(prefab);
+        newBullet.transform.position = postion;
+        return newBullet;
     }
 
-    public virtual void Despawn(Transform prefab)
+    public virtual void Despawn(Transform obj)
     {
-        Destroy(prefab.gameObject);
+        Destroy(obj.gameObject);
     }
 
     public virtual void Despawn(T obj)
     {
-        if(obj is MonoBehaviour monoBehaviour)
+        if (obj is MonoBehaviour monoBehaviour)
         {
             monoBehaviour.gameObject.SetActive(false);
             this.AddObjectToPool(obj);
@@ -73,14 +91,15 @@ public abstract class Spawner<T> : SaiMonoBehaviour where T : PoolObject
 
     protected virtual T GetObjFromPool(T prefab)
     {
-        foreach(T inPoolObj in this.inPoolObjs)
+        foreach (T inPoolObj in this.inPoolObjs )
         {
-            if(prefab.GetName() == inPoolObj.GetName())
+            if (prefab.GetName() == inPoolObj.GetName())
             {
-                this.RemoveObjectFromPool(inPoolObj);   
+                this.RemoveObjectFromPool(inPoolObj);
                 return inPoolObj;
             }
         }
+
         return null;
     }
 }

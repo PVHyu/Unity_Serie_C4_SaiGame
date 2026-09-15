@@ -30,8 +30,5 @@ public abstract class SaiSingleton<T> : SaiMonoBehaviour where T :SaiMonoBehavio
         if(_instance != this) Debug.LogError("Another instance of SingletonExample already exist");
     }
 
-    public virtual void Drop(ItemCode itemCode, int dropCoint)
-    {
-            
-    }
+   
 }

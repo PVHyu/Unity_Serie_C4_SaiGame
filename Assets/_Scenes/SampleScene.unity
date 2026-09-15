@@ -951,7 +951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160604442}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2622,6 +2622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483712968}
   - component: {fileID: 483712969}
+  - component: {fileID: 483712970}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Untagged
@@ -2659,6 +2660,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDropCtrl
   despawn: {fileID: 1399810027}
+  _rigid: {fileID: 483712970}
+--- !u!54 &483712970
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483712967}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &493992608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,7 +3596,6 @@ Transform:
   - {fileID: 368583275}
   - {fileID: 238762161}
   - {fileID: 1028659229}
-  - {fileID: 1470919060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &766958541
@@ -4447,7 +4475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
   spawnCount: 0
-  poolHolder: {fileID: 370365636}
+  poolHolder: {fileID: 370365637}
+  poolPrefabs: {fileID: 1470919061}
   inPoolObjs: []
 --- !u!4 &1028659229
 Transform:
@@ -4463,6 +4492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 370365637}
+  - {fileID: 1470919060}
   m_Father: {fileID: 758309996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029701358
@@ -4552,14 +4582,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030406352}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 527074036001865952}
   - {fileID: 256330274}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1917022719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1043706376
 PrefabInstance:
@@ -4922,7 +4952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnCount: 0
-  poolHolder: {fileID: 1416723269}
+  poolHolder: {fileID: 1416723270}
+  poolPrefabs: {fileID: 0}
   inPoolObjs: []
 --- !u!1 &1267631336
 GameObject:
@@ -4986,6 +5017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsDropManager
   spawner: {fileID: 1283489431}
+  spawnHeight: 1
+  forceAmount: 5
+  numberOfItems: 10
 --- !u!114 &1283489431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4999,7 +5033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemsDropSpawner
   spawnCount: 0
-  poolHolder: {fileID: 533330469}
+  poolHolder: {fileID: 533330470}
+  poolPrefabs: {fileID: 1285299877}
   inPoolObjs: []
 --- !u!4 &1283489432
 Transform:
@@ -5010,7 +5045,7 @@ Transform:
   m_GameObject: {fileID: 1283489429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: 0}
+  m_LocalPosition: {x: 0, y: 6.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5181,7 +5216,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1954068052}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5730,12 +5765,12 @@ Transform:
   m_GameObject: {fileID: 1470919059}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.40196, y: 0.29556, z: 25.95786}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2131575587}
-  m_Father: {fileID: 758309996}
+  m_Father: {fileID: 1028659229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1470919061
 MonoBehaviour:
@@ -5776,7 +5811,7 @@ Transform:
   m_GameObject: {fileID: 1475333198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 377.69333, y: 295.63092, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7634,7 +7669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectSpawner
   spawnCount: 0
-  poolHolder: {fileID: 1726770113}
+  poolHolder: {fileID: 1726770114}
+  poolPrefabs: {fileID: 1030406353}
   inPoolObjs: []
 --- !u!4 &1917022719
 Transform:
@@ -7650,6 +7686,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1726770114}
+  - {fileID: 1030406354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919748099
@@ -8028,8 +8065,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1254532808}
-  - {fileID: 1029701359}
   - {fileID: 160604443}
+  - {fileID: 1029701359}
   m_Father: {fileID: 1675805591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2003892419
@@ -9360,6 +9397,5 @@ SceneRoots:
   - {fileID: 166478153}
   - {fileID: 848900758}
   - {fileID: 1917022719}
-  - {fileID: 1030406354}
   - {fileID: 1475333199}
   - {fileID: 1283489432}

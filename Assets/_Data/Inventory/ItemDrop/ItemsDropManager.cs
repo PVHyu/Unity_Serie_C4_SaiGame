@@ -7,6 +7,16 @@ public class ItemsDropManager : SaiSingleton<ItemsDropManager>
     [SerializeField] protected ItemsDropSpawner spawner;
     public ItemsDropSpawner Spawner => spawner;
 
+    public float spawnHeight = 1.0f;
+    public float forceAmount = 5.0f;
+    public int numberOfItems = 10;
+
+    protected override void Start()
+    {
+        base.Start();
+        
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -18,5 +28,19 @@ public class ItemsDropManager : SaiSingleton<ItemsDropManager>
         if(this.spawner != null) return;
         this.spawner = GetComponent<ItemsDropSpawner>();
         Debug.Log(transform.name + ": LoadSpawner", gameObject);
+    }
+
+     public virtual void Drop(ItemCode itemCode, int dropCoint, Vector3 dropPosition)
+    {
+        Vector3 spawnPosition = dropPosition + new Vector3(Random.Range(-0.5f, 0.5f), spawnHeight, Random.Range(-0.5f, 0.5f));
+        ItemDropCtrl itemPrefab = this.spawner.PoolPrefabs.GetByName(itemCode.ToString());
+        if(itemPrefab == null) itemPrefab = this.spawner.PoolPrefabs.GetByName("DefaultDrop");
+
+        ItemDropCtrl newItem = this.spawner.Spawn(itemPrefab, spawnPosition);
+        newItem.gameObject.SetActive(true);
+
+        Vector3 randomDirection = Random.onUnitSphere;
+        randomDirection.y = Mathf.Abs(randomDirection.y);
+        newItem.Rigidbody.AddForce(randomDirection * forceAmount, ForceMode.Impulse);
     }
 }
