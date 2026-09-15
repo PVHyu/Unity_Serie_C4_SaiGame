@@ -28,7 +28,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         }
     }    
 
-    public virtual InventoryCtrl GetByName(InvCodeName inventoryName)
+    public virtual InventoryCtrl GetByCodeName(InvCodeName inventoryName)
     {
         foreach(InventoryCtrl inventory in this.inventories)
         {
@@ -49,12 +49,12 @@ public class InventoryManager : SaiSingleton<InventoryManager>
 
     public virtual InventoryCtrl Monies()
     {
-        return this.GetByName(InvCodeName.Monies);
+        return this.GetByCodeName(InvCodeName.Monies);
     }
 
     public virtual InventoryCtrl Items()
     {
-        return this.GetByName(InvCodeName.Items);
+        return this.GetByCodeName(InvCodeName.Items);
     }
 
     protected virtual void LoadItemProfiles()
