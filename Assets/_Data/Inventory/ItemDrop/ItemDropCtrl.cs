@@ -13,7 +13,7 @@ public class ItemDropCtrl : PoolObject
     protected ItemCode itemCode;
     public ItemCode ItemCode => itemCode;
     protected int itemCount = 1;
-    protected int ItemCount => itemCount;
+    public int ItemCount => itemCount;
 
 
     public override string GetName()

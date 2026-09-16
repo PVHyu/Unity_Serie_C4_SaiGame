@@ -49,7 +49,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
 
     public virtual InventoryCtrl Monies()
     {
-        return this.GetByCodeName(InvCodeName.Monies);
+        return this.GetByCodeName(InvCodeName.Currency);
     }
 
     public virtual InventoryCtrl Items()
@@ -63,5 +63,21 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         ItemProfileSO[] itemProfileSOs = Resources.LoadAll<ItemProfileSO>("/");
         this.itemProfiles = new List<ItemProfileSO>(itemProfileSOs);
         Debug.Log(transform.name + ": LoadItemProfiles", gameObject);
+    }
+
+     public virtual void AddItem(ItemInventory itemInventory)
+    {
+        InvCodeName invCodeName = itemInventory.ItemProfile.invCodeName;
+        InventoryCtrl inventoryCtrl = InventoryManager.Instance.GetByCodeName(invCodeName);
+        inventoryCtrl.AddItem(itemInventory);
+    }
+
+    public virtual void AddItem(ItemCode itemCode, int itemCount)
+    {
+        ItemProfileSO itemProfile = InventoryManager.Instance.GetProfileByCode(itemCode);
+        if(itemProfile == null) Debug.Log("itemProfile is null");
+        ItemInventory item = new(itemProfile, itemCount);
+        if(item == null) Debug.Log("item is null");
+        this.AddItem(item);
     }
 }

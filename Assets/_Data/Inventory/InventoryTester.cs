@@ -13,11 +13,10 @@ public class InventoryTester : SaiMonoBehaviour
         for(int i = 0; i < count; i++)
         {
             ItemInventory wand = new ItemInventory
-            {
-                ItemProfile = InventoryManager.Instance.GetProfileByCode(ItemCode.Wand), 
-                itemName = InventoryManager.Instance.GetProfileByCode(ItemCode.Wand).itemName,
-                itemCount = 1,
-            };
+            (
+                InventoryManager.Instance.GetProfileByCode(ItemCode.Wand),
+                 1
+            );
             items.AddItem(wand);
         }
     }
@@ -29,11 +28,10 @@ public class InventoryTester : SaiMonoBehaviour
         for(int i = 0; i < count; i++)
         {
             ItemInventory wand = new ItemInventory
-            {
-                ItemProfile = InventoryManager.Instance.GetProfileByCode(ItemCode.Wand), 
-                itemName = InventoryManager.Instance.GetProfileByCode(ItemCode.Wand).itemName,
-                itemCount = 1,
-            };
+            (
+                InventoryManager.Instance.GetProfileByCode(ItemCode.Wand),
+                 1
+            );
 
             items.RemoveItem(wand);
         }
@@ -42,28 +40,26 @@ public class InventoryTester : SaiMonoBehaviour
     [ProButton]
     public virtual void AddTestGold(int count)
     {
-        InventoryCtrl monies = InventoryManager.Instance.GetByCodeName(InvCodeName.Monies);
+        InventoryCtrl monies = InventoryManager.Instance.GetByCodeName(InvCodeName.Currency);
 
         ItemInventory gold = new ItemInventory
-            {
-                ItemProfile = InventoryManager.Instance.GetProfileByCode(ItemCode.Gold),
-                itemName = InventoryManager.Instance.GetProfileByCode(ItemCode.Gold).itemName,
-                itemCount = count,
-            };
+            (
+                InventoryManager.Instance.GetProfileByCode(ItemCode.Gold),
+                 1
+            );
         monies.AddItem(gold);
     }
 
     [ProButton]
     public virtual void RemoveTestGold(int count)
     {
-        InventoryCtrl monies = InventoryManager.Instance.GetByCodeName(InvCodeName.Monies);
+        InventoryCtrl monies = InventoryManager.Instance.GetByCodeName(InvCodeName.Currency);
 
         ItemInventory gold = new ItemInventory
-            {
-                ItemProfile = InventoryManager.Instance.GetProfileByCode(ItemCode.Gold),
-                itemName = InventoryManager.Instance.GetProfileByCode(ItemCode.Gold).itemName,
-                itemCount = count,
-            };
+            (
+                InventoryManager.Instance.GetProfileByCode(ItemCode.Gold),
+                 1
+            );
         monies.RemoveItem(gold);
     }
 }

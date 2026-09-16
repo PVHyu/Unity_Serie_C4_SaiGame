@@ -6,4 +6,5 @@ public enum ItemCode
     Gold,
     Wand,
     PotionMana,
+    PlayerExp,
 }

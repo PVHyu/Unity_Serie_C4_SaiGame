@@ -6,19 +6,19 @@ public class ItemInventory
 {
     public int ItemID {get; set;}
 
-    // protected ItemProfileSO itemProfile;
+    protected ItemProfileSO itemProfile;
     public ItemProfileSO ItemProfile {get; set;}
     
     public string itemName;
     
     public int itemCount;
 
-    // public ItemInventory(ItemProfileSO itemProfile, int itemCount)
-    // {
-    //     this.itemProfile = itemProfile;
-    //     this.itemCount = itemCount;
-    //     this.itemName = this.itemProfile.itemName;
-    // }
+    public ItemInventory(ItemProfileSO itemProfile, int itemCount)
+    {
+        this.itemProfile = itemProfile;
+        this.itemCount = itemCount;
+        this.itemName = this.itemProfile.itemName;
+    }
 
     public virtual void SetId(int id)
     {
@@ -30,11 +30,11 @@ public class ItemInventory
         this.itemName = name;
     }
 
-    // public virtual string GetItemName()
-    // {
-    //     if (this.itemName == null || this.itemName == "") return this.itemProfile.itemName;
-    //     return this.itemName;
-    // }
+    public virtual string GetItemName()
+    {
+        if (this.itemName == null || this.itemName == "") return this.itemProfile.itemName;
+        return this.itemName;
+    }
 
     public virtual bool Deduct(int number)
     {

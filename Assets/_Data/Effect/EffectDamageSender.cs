@@ -17,7 +17,6 @@ public class EffectDamageSender : DamageSender
     {
         if (this.effectCtrl != null) return;
         this.effectCtrl = transform.parent.GetComponent<EffectCtrl>();
-        Debug.Log(transform.name + ": LoadEffectCtrl", gameObject);
     }
 
     protected virtual void LoadSphereCollider()
