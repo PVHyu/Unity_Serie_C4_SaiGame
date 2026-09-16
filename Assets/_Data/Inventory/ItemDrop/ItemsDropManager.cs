@@ -30,10 +30,19 @@ public class ItemsDropManager : SaiSingleton<ItemsDropManager>
         Debug.Log(transform.name + ": LoadSpawner", gameObject);
     }
 
+    public virtual void DropMany(ItemCode itemCode, int dropCount, Vector3 dropPosition)
+    {
+        for(int i = 0; i < dropCount; i++)
+        {
+            this.Drop(itemCode, 1, dropPosition);
+        }
+    }
+
      public virtual void Drop(ItemCode itemCode, int dropCount, Vector3 dropPosition)
     {
         Vector3 spawnPosition = dropPosition + new Vector3(0, spawnHeight, 0);
-        ItemDropCtrl itemPrefab = this.spawner.PoolPrefabs.GetByName("Gold");
+        ItemDropCtrl itemPrefab = this.spawner.PoolPrefabs.GetByName(itemCode.ToString());
+        if(itemPrefab == null) itemPrefab = this.spawner.PoolPrefabs.GetByName("DefaultDrop");
 
         ItemDropCtrl newItem = this.spawner.Spawn(itemPrefab, spawnPosition);
         newItem.SetValue(itemCode, dropCount, InvCodeName.Monies);
