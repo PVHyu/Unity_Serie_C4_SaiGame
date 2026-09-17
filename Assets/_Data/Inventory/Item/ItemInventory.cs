@@ -5,8 +5,6 @@ using UnityEngine;
 public class ItemInventory
 {
     public int ItemID {get; set;}
-
-    protected ItemProfileSO itemProfile;
     public ItemProfileSO ItemProfile {get; set;}
     
     public string itemName;
@@ -15,9 +13,9 @@ public class ItemInventory
 
     public ItemInventory(ItemProfileSO itemProfile, int itemCount)
     {
-        this.itemProfile = itemProfile;
+        this.ItemProfile = itemProfile;
         this.itemCount = itemCount;
-        this.itemName = this.itemProfile.itemName;
+        this.itemName = this.ItemProfile.itemName;
     }
 
     public virtual void SetId(int id)
@@ -32,7 +30,7 @@ public class ItemInventory
 
     public virtual string GetItemName()
     {
-        if (this.itemName == null || this.itemName == "") return this.itemProfile.itemName;
+        if (this.itemName == null || this.itemName == "") return this.ItemProfile.itemName;
         return this.itemName;
     }
 

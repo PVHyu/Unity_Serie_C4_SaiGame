@@ -1,49 +1,51 @@
 using com.cyborgAssets.inspectorButtonPro;
-using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
-
 
 public class InventoryManager : SaiSingleton<InventoryManager>
 {
     [SerializeField] protected List<InventoryCtrl> inventories;
     [SerializeField] protected List<ItemProfileSO> itemProfiles;
 
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadInventories();
-        // this.LoadItemProfiles();
+        this.LoadItemProfiles();
     }
-
     protected virtual void LoadInventories()
     {
-        if(this.inventories.Count > 0) return;
-        foreach(Transform child in transform)
+        if (this.inventories.Count > 0) return;
+        foreach (Transform child in transform)
         {
             InventoryCtrl inventoryCtrl = child.GetComponent<InventoryCtrl>();
-            if(inventoryCtrl == null) continue;
+            if (inventoryCtrl == null) continue;
             this.inventories.Add(inventoryCtrl);
         }
-    }    
+        Debug.Log(transform.name + ": LoadInventories", gameObject);
+    }
 
     public virtual InventoryCtrl GetByCodeName(InvCodeName inventoryName)
     {
-        foreach(InventoryCtrl inventory in this.inventories)
+        foreach (InventoryCtrl inventory in this.inventories)
         {
-            if(inventory.GetName() == inventoryName) return inventory;
+            if (inventory.GetName() == inventoryName) return inventory;
         }
+
         return null;
     }
 
     public virtual ItemProfileSO GetProfileByCode(ItemCode itemCodeName)
     {
-        foreach(ItemProfileSO itemProfile in this.itemProfiles)
+        foreach (ItemProfileSO itemProfile in this.itemProfiles)
         {
-            if(itemProfile.itemCode == itemCodeName) return itemProfile;
+            if (itemProfile.itemCode == itemCodeName)
+            {
+                Debug.Log(itemProfile.itemCode.ToString() + " in GetProfileByCode ");
+                return itemProfile;
+            }
         }
-        Debug.Log(itemCodeName.ToString() + "return Null");
         return null;
     }
 
@@ -57,15 +59,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         return this.GetByCodeName(InvCodeName.Items);
     }
 
-    protected virtual void LoadItemProfiles()
-    {
-        if(this.itemProfiles.Count > 0) return;
-        ItemProfileSO[] itemProfileSOs = Resources.LoadAll<ItemProfileSO>("/");
-        this.itemProfiles = new List<ItemProfileSO>(itemProfileSOs);
-        Debug.Log(transform.name + ": LoadItemProfiles", gameObject);
-    }
-
-     public virtual void AddItem(ItemInventory itemInventory)
+    public virtual void AddItem(ItemInventory itemInventory)
     {
         InvCodeName invCodeName = itemInventory.ItemProfile.invCodeName;
         InventoryCtrl inventoryCtrl = InventoryManager.Instance.GetByCodeName(invCodeName);
@@ -73,11 +67,32 @@ public class InventoryManager : SaiSingleton<InventoryManager>
     }
 
     public virtual void AddItem(ItemCode itemCode, int itemCount)
+    {   
+        ItemProfileSO itemProfile = InventoryManager.Instance.GetProfileByCode(itemCode);
+        ItemInventory item = new(itemProfile, itemCount);
+        this.AddItem(item);
+    }
+
+    public virtual void RemoveItem(ItemCode itemCode, int itemCount)
     {
         ItemProfileSO itemProfile = InventoryManager.Instance.GetProfileByCode(itemCode);
-        if(itemProfile == null) Debug.Log("itemProfile is null");
+
         ItemInventory item = new(itemProfile, itemCount);
-        if(item == null) Debug.Log("item is null");
-        this.AddItem(item);
+        this.RemoveItem(item);
+    }
+
+    public virtual void RemoveItem(ItemInventory itemInventory)
+    {
+        InvCodeName invCodeName = itemInventory.ItemProfile.invCodeName;
+        InventoryCtrl inventoryCtrl = InventoryManager.Instance.GetByCodeName(invCodeName);
+        inventoryCtrl.RemoveItem(itemInventory);
+    }
+
+    protected virtual void LoadItemProfiles()
+    {
+        if (this.itemProfiles.Count > 0) return;
+        ItemProfileSO[] itemProfileSOs = Resources.LoadAll<ItemProfileSO>("/");
+        this.itemProfiles = new List<ItemProfileSO>(itemProfileSOs);
+        Debug.Log(transform.name + ": LoadItemProfiles", gameObject);
     }
 }

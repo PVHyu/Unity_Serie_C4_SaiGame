@@ -15,4 +15,4 @@ MonoBehaviour:
   invCodeName: 1
   itemCode: 4
   itemName: Player Exp
-  isStackable: 0
+  isStackable: 1
