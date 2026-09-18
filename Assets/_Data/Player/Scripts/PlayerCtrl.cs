@@ -25,8 +25,8 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
     [SerializeField] protected Weapons weapons;
     public Weapons Weapons => weapons;
 
-    // [SerializeField] protected LevelAbstract level;
-    // public LevelAbstract Level => level;
+    [SerializeField] protected LevelAbstract level;
+    public LevelAbstract Level => level;
 
     protected override void LoadComponents()
     {
@@ -37,15 +37,15 @@ public class PlayerCtrl : SaiSingleton<PlayerCtrl>
         this.LoadAimingRig();
         this.LoadAnimator();
         this.LoadWeapons();
-        // this.LoadLevel();
+        this.LoadLevel();
     }
 
-    // protected virtual void LoadLevel()
-    // {
-    //     if (this.level != null) return;
-    //     this.level = GetComponentInChildren<LevelAbstract>();
-    //     Debug.Log(transform.name + ": LoadLevel", gameObject);
-    // }
+    protected virtual void LoadLevel()
+    {
+        if (this.level != null) return;
+        this.level = GetComponentInChildren<LevelAbstract>();
+        Debug.Log(transform.name + ": LoadLevel", gameObject);
+    }
 
     protected virtual void LoadWeapons()
     {
