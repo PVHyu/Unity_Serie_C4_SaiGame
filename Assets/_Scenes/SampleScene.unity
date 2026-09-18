@@ -325,10 +325,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerShooting
   towerCtrl: {fileID: 368583276}
   currentFirePoint: 0
-  shootSpeed: 0.1
-  targetLoadSpeed: 1
+  shootSpeed: 0.01
+  targetLoadSpeed: 0.1
+  totalKill: 0
+  killCount: 0
+  rotationSpeed: 20
   target: {fileID: 0}
-  rotationSpeed: 10
 --- !u!114 &67489051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8051106828586211542, guid: 608d242aa4c29b54986994478203a5f0, type: 3}
@@ -928,6 +930,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148901736}
   m_CullTransparentMesh: 1
+--- !u!114 &159197560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7048609013700539245, guid: 4509f78a54b10df4983d1bdbf882a22e, type: 3}
+  m_PrefabInstance: {fileID: 6101260518365959862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc1c63206aeaa845905c4120738b598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirePoint
 --- !u!1 &160604442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1442,7 @@ MonoBehaviour:
   bulletSpawner: {fileID: 1028659228}
   bullet: {fileID: 2131575586}
   bulletPrefabs: {fileID: 1470919061}
+  towerShooting: {fileID: 0}
   firePoints:
   - {fileID: 1554038229}
 --- !u!4 &238762161
@@ -1447,6 +1461,7 @@ Transform:
   - {fileID: 1471638}
   - {fileID: 1689068411}
   - {fileID: 1908054112}
+  - {fileID: 242594456}
   m_Father: {fileID: 758309996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &238762162
@@ -1470,6 +1485,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -0.25, y: 1, z: 0}
+--- !u!1 &242594455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242594456}
+  - component: {fileID: 242594457}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242594456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242594455}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.55804443, y: 0, z: -11.190001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 238762161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242594457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242594455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ea97ff1c8c2c498b57c533b39d373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerLevel
+  currentLevel: 1
+  maxLevel: 100
+  nextLevelExp: 0
+  towerCtrl: {fileID: 238762160}
 --- !u!1 &256330273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1958,7 @@ Transform:
   - {fileID: 5911749215380864673}
   - {fileID: 2052607729}
   - {fileID: 64066951}
+  - {fileID: 1623790678}
   m_Father: {fileID: 758309996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &368583276
@@ -1915,7 +1979,9 @@ MonoBehaviour:
   bulletSpawner: {fileID: 1028659228}
   bullet: {fileID: 2131575586}
   bulletPrefabs: {fileID: 1470919061}
+  towerShooting: {fileID: 64066952}
   firePoints:
+  - {fileID: 159197560}
   - {fileID: 321174023}
 --- !u!65 &368583277
 BoxCollider:
@@ -4809,7 +4875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawning
   enemyManagerCtrl: {fileID: 2003892419}
-  spawnSpeed: 3
+  spawnSpeed: 0.1
   maxSpawn: 10
 --- !u!1 &1030406352
 GameObject:
@@ -5964,10 +6030,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1470919060}
     m_Modifications:
-    - target: {fileID: 57643482818753897, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2854754006189517901, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -60.35
@@ -6011,10 +6073,6 @@ PrefabInstance:
     - target: {fileID: 7283299165762319509, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
       propertyPath: m_Name
       value: Bullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 7283299165762319509, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8420456030425596396, guid: 4bcb79d87b30dab49aed59d002aa23ba, type: 3}
       propertyPath: spawner
@@ -7319,6 +7377,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd8106ecc1a0db4ea98cce9f6102e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerTargetable
+--- !u!1 &1623790677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623790678}
+  - component: {fileID: 1623790679}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623790678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623790677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 368583275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623790679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623790677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ea97ff1c8c2c498b57c533b39d373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerLevel
+  currentLevel: 1
+  maxLevel: 100
+  nextLevelExp: 0
+  towerCtrl: {fileID: 368583276}
 --- !u!1 &1627115828
 GameObject:
   m_ObjectHideFlags: 0
@@ -8583,8 +8689,10 @@ MonoBehaviour:
   currentFirePoint: 0
   shootSpeed: 0.1
   targetLoadSpeed: 1
-  target: {fileID: 0}
+  totalKill: 0
+  killCount: 0
   rotationSpeed: 10
+  target: {fileID: 0}
 --- !u!1 &1912172866
 GameObject:
   m_ObjectHideFlags: 0

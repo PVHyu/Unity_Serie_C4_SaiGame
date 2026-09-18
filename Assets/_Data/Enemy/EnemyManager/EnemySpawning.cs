@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawning : EnemyManagerAbstract
 {
-    [SerializeField] protected float spawnSpeed = 1f;
+    [SerializeField] protected float spawnSpeed = 0.1f;
     [SerializeField] protected int maxSpawn = 10;
     protected List<EnemyCtrl> spawnedEnemies = new();
 

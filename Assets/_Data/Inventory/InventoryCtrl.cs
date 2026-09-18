@@ -39,7 +39,7 @@ public abstract class InventoryCtrl : SaiMonoBehaviour
         {
             if (itemInventory?.ItemProfile?.itemCode == itemCode) 
             {
-                Debug.Log("Finded " + itemInventory.ItemProfile.itemCode.ToString());
+                // Debug.Log("Finded " + itemInventory.ItemProfile.itemCode.ToString());
                 return itemInventory;
             }
         }

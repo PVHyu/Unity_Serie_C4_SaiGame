@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletDamageSender
   rigidbody: {fileID: 4522432983901536512}
-  damage: 1
+  damage: 10
   sphereCollider: {fileID: 687628364338496451}
   bulletCtrl: {fileID: 6783125692566608595}
 --- !u!1 &6462632707266121726
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletDespawn
   parent: {fileID: 4769596464177830841}
   spawner: {fileID: 0}
+  isDespawnByTime: 1
   timeLife: 7
   currentTime: 7
 --- !u!1 &7283299165762319509

@@ -42,7 +42,7 @@ public class InventoryManager : SaiSingleton<InventoryManager>
         {
             if (itemProfile.itemCode == itemCodeName)
             {
-                Debug.Log(itemProfile.itemCode.ToString() + " in GetProfileByCode ");
+                // Debug.Log(itemProfile.itemCode.ToString() + " in GetProfileByCode ");
                 return itemProfile;
             }
         }
