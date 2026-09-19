@@ -16,7 +16,7 @@ public class TextTowerLevel: TextLevel
     {
         if (this.towerCtrl != null) return;
         this.towerCtrl = GetComponentInParent<TowerCtrl>();
-        Debug.Log(transform.name + ": LoadTowerCtrl", gameObject);
+        Debug.Log(transform.name + ": LoadTowerCtrl ", gameObject);
     }
 
     protected override string GetLevel()
