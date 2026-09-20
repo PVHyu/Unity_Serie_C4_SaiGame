@@ -15,7 +15,7 @@ public abstract class SliderAbstract : SaiMonoBehaviour
     protected virtual void LoadSlider()
     {
         if(this.slider != null) return;
-        this.slider = GetComponent<Slider>();
+        this.slider = GetComponentInChildren<Slider>();
         Debug.Log(transform.name + " : LoadSlider", gameObject);
     }
 }

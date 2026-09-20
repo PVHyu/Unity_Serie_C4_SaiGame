@@ -2333,15 +2333,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.0713196
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.50871
+      value: 2.214
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.02104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6201,8 +6201,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1954068053}
   m_HandleRect: {fileID: 1954068052}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10025,15 +10025,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.92505
-      objectReference: {fileID: 0}
-    - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.323563
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7006998525731480707, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11151,6 +11151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHp
       objectReference: {fileID: 0}
+    - target: {fileID: 519163989995563647, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
+      propertyPath: enemyCtrl
+      value: 
+      objectReference: {fileID: 440877032}
     - target: {fileID: 811267705187701936, guid: 61c0d66db439078409df6ae211c70c54, type: 3}
       propertyPath: m_Camera
       value: 
