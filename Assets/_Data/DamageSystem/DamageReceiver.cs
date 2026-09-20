@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class DamageReceiver : SaiMonoBehaviour
 {
-    protected int maxHP = 10;
-    protected int currentHP = 10;
+    public int MaxHP {get; set;} = 10;
+    public int CurrentHP {get; set;} = 10;
     protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false;
 
@@ -16,7 +16,7 @@ public abstract class DamageReceiver : SaiMonoBehaviour
 
     public virtual int Deduct(int hp)
     {
-        this.currentHP -= hp;
+        this.CurrentHP -= hp;
         if(this.IsDead()) 
         {
             this.OnDead();
@@ -25,13 +25,13 @@ public abstract class DamageReceiver : SaiMonoBehaviour
         {
             this.OnHurt();
         }
-        if(this.currentHP <= 0) this.currentHP = 0;
-        return this.currentHP;
+        if(this.CurrentHP <= 0) this.CurrentHP = 0;
+        return this.CurrentHP;
     }
 
     public virtual bool IsDead()
     {
-        return this.isDead = this.currentHP <= 0;
+        return this.isDead = this.CurrentHP <= 0;
     }
 
     protected virtual void OnDead()
@@ -46,7 +46,7 @@ public abstract class DamageReceiver : SaiMonoBehaviour
 
     protected virtual void OnReborn()
     {
-        this.currentHP = this.maxHP;
+        this.CurrentHP = this.MaxHP;
         // this.isDead = false;
     }
 }
