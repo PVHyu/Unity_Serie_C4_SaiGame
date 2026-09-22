@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 277651040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -9.8}
+  m_LocalPosition: {x: -0, y: 0.1, z: -14.118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -344,7 +344,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424079434}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1.5
@@ -396,7 +396,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -732,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198079035555830294, guid: 5d92d3c6f97114f378b0eed64ada0a6c, type: 3}
       propertyPath: randomSeed
-      value: 1916991397
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199818755450901512, guid: 5d92d3c6f97114f378b0eed64ada0a6c, type: 3}
       propertyPath: m_Materials.Array.size
@@ -935,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 1895089173}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1464466, y: 0.8535535, z: -0.35355338, w: 0.35355338}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.5, y: 11, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
