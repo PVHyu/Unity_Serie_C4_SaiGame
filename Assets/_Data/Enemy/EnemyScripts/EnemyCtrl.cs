@@ -61,6 +61,7 @@ public abstract class EnemyCtrl : PoolObject
     {
         if(this.towerTargetable != null) return;
         this.towerTargetable = transform.GetComponentInChildren<TowerTargetable>();
+        this.towerTargetable.transform.position = new Vector3(0, 1f, 0);
         Debug.Log(transform.name + ": LoadAnimator", gameObject);
     }
 
