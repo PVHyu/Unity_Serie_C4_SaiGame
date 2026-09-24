@@ -20,10 +20,10 @@ public abstract class DamageSender : SaiMonoBehaviour
     {
         DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
         if(damageReceiver == null) return;
-        this.Send(damageReceiver);
+        this.Send(damageReceiver, collider);
     }
 
-    protected virtual void Send(DamageReceiver damageReceiver)
+    protected virtual void Send(DamageReceiver damageReceiver, Collider collider)
     {
         if(damageReceiver == null) Debug.Log("DamageReceiver is null");
         damageReceiver.Deduct(this.damage);

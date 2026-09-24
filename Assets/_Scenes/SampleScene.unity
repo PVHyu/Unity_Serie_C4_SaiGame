@@ -8364,7 +8364,7 @@ GameObject:
   - component: {fileID: 1690174781}
   - component: {fileID: 1690174784}
   - component: {fileID: 1690174783}
-  - component: {fileID: 1690174782}
+  - component: {fileID: 1690174785}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -8387,22 +8387,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 256330274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1690174782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690174780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5ba2b078cec2540bdac7027ee12e3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EffectDamageSender
-  rigidbody: {fileID: 1690174783}
-  damage: 5
-  effectCtrl: {fileID: 0}
-  sphereCollider: {fileID: 1690174784}
 --- !u!54 &1690174783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8451,6 +8435,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1690174785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690174780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a517bc1688c2fd540ad001aca2295fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectMuzzle1DamageSender
+  rigidbody: {fileID: 1690174783}
+  damage: 10
+  effectCtrl: {fileID: 256330275}
+  sphereCollider: {fileID: 1690174784}
 --- !u!1 &1720512648
 GameObject:
   m_ObjectHideFlags: 0
@@ -11016,7 +11016,7 @@ GameObject:
   - component: {fileID: 5864037839953596222}
   - component: {fileID: 5864037839953596225}
   - component: {fileID: 5864037839953596224}
-  - component: {fileID: 5864037839953596223}
+  - component: {fileID: 5864037839953596226}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -11140,22 +11140,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 527074036001865952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5864037839953596223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3803398387084404050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5ba2b078cec2540bdac7027ee12e3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EffectDamageSender
-  rigidbody: {fileID: 5864037839953596224}
-  damage: 5
-  effectCtrl: {fileID: 5034442393892214841}
-  sphereCollider: {fileID: 5864037839953596225}
 --- !u!54 &5864037839953596224
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11204,6 +11188,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5864037839953596226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803398387084404050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a517bc1688c2fd540ad001aca2295fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EffectMuzzle1DamageSender
+  rigidbody: {fileID: 5864037839953596224}
+  damage: 10
+  effectCtrl: {fileID: 5034442393892214841}
+  sphereCollider: {fileID: 5864037839953596225}
 --- !u!4 &6765711892884655507
 Transform:
   m_ObjectHideFlags: 0

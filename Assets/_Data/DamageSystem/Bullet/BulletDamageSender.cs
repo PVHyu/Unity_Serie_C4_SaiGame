@@ -30,9 +30,9 @@ public class BulletDamageSender : DamageSender
         this.sphereCollider.radius = 0.05f;
     }
 
-    protected override void Send(DamageReceiver damageReceiver)
+    protected override void Send(DamageReceiver damageReceiver, Collider collider)
     {
-        base.Send(damageReceiver);
+        base.Send(damageReceiver, collider);
         this.bulletCtrl.Bullet.Despawn.DoDespawn();
     }
 }
