@@ -47,7 +47,7 @@ public abstract class EnemyCtrl : PoolObject
     {
         if(this.model != null) return;
         this.model = transform.Find("Model");
-        Debug.Log(transform.name + ": LoadNavMeshAgent", gameObject);
+        Debug.Log(transform.name + ": LoadNavMeshAgent ", gameObject);
     }
 
     protected virtual void LoadAnimator()
