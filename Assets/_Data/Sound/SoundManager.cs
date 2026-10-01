@@ -12,7 +12,7 @@ public class SoundManager : SaiSingleton<SoundManager>
     [SerializeField] protected float volumeMusic = 1f;
 
     [Range(0f, 1f)]
-    [SerializeField] protected float volumeSfx = 1f;
+    [SerializeField] protected float volumeSFX = 1f;
     [SerializeField] protected List<MusicCtrl> listMusic;
     [SerializeField] protected List<SFXCtrl> listSfx;
 
@@ -30,8 +30,8 @@ public class SoundManager : SaiSingleton<SoundManager>
 
     protected virtual void FixedUpdate()
     {
-        //this.VolumeMusicUpdating();
-        //this.VolumeSfxUpdating();
+        this.VolumeMusicUpdating(volumeMusic);
+        this.VolumeSfxUpdating(volumeSFX);
     }
 
     protected override void LoadComponents()
@@ -114,10 +114,10 @@ public class SoundManager : SaiSingleton<SoundManager>
 
     public virtual void VolumeSfxUpdating(float volume)
     {
-        this.volumeSfx = volume;
+        this.volumeSFX = volume;
         foreach (SFXCtrl sfxCtrl in this.listSfx)
         {
-            sfxCtrl.AudioSource.volume = this.volumeSfx;
+            sfxCtrl.AudioSource.volume = this.volumeSFX;
         }
     }
 }
