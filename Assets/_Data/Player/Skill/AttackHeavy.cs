@@ -3,6 +3,7 @@ using UnityEngine;
 public class AttackHeavy : AttackAbstract
 {
     protected string effectName = "Fire2";
+    protected SoundName shootSFXName = SoundName.LaserOneShoot;
 
     protected override void Attacking()
     {
@@ -14,11 +15,19 @@ public class AttackHeavy : AttackAbstract
         effectFly.FlyToTarget.SetTarget(this.playerCtrl.CrosshairPointer.transform);
 
         effect.gameObject.SetActive(true);
-        Debug.Log("Light Attack");
+        Debug.Log("Heavy Attack");
+        this.SpawnSound(attackPoint.transform.position);
     }
 
     protected virtual EffectCtrl GetEffect()
     {
         return this.prefabs.GetByName(this.effectName);
+    }
+
+    protected virtual void SpawnSound(Vector3 position)
+    {
+        SFXCtrl newSfx = SoundManager.Instance.CreateSfx(this.shootSFXName);
+        newSfx.transform.position = position;
+        newSfx.gameObject.SetActive(true);
     }
 }

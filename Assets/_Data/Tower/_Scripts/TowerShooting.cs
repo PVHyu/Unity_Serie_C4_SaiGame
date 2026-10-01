@@ -22,7 +22,7 @@ public class TowerShooting : TowerAbstract
         }
     }
 
-    // [SerializeField] protected SoundName shootSfxName = SoundName.LaserKickDrum;
+    [SerializeField] protected SoundName shootSFXName = SoundName.LaserKickDrum;
 
     [SerializeField] protected EffectSpawner effectSpawner;
 
@@ -85,7 +85,7 @@ public class TowerShooting : TowerAbstract
 
         this.SpawnBullet(firePoint.transform.position, rotatorDirection);
         this.SpawnMuzzle(firePoint.transform.position, rotatorDirection);
-        // this.SpawnSound(firePoint.transform.position);
+        this.SpawnSound(firePoint.transform.position);
     }
 
     protected virtual void SpawnBullet(Vector3 spawnPoint, Vector3 rotatorDirection)
@@ -138,12 +138,12 @@ public class TowerShooting : TowerAbstract
         return true;
     }
 
-    // protected virtual void SpawnSound(Vector3 position)
-    // {
-    //     SFXCtrl newSfx = SoundManager.Instance.CreateSfx(this.shootSfxName);
-    //     newSfx.transform.position = position;
-    //     newSfx.gameObject.SetActive(true);
-    // }
+    protected virtual void SpawnSound(Vector3 position)
+    {
+        SFXCtrl newSfx = SoundManager.Instance.CreateSfx(this.shootSFXName);
+        newSfx.transform.position = position;
+        newSfx.gameObject.SetActive(true);
+    }
 }
 
 
