@@ -12,7 +12,7 @@ public class SoundManager : SaiSingleton<SoundManager>
     [SerializeField] protected float volumeMusic = 1f;
 
     [Range(0f, 1f)]
-    [SerializeField] protected float volumeSFX = 1f;
+    [SerializeField] protected float volumeSfx = 1f;
     [SerializeField] protected List<MusicCtrl> listMusic;
     [SerializeField] protected List<SFXCtrl> listSfx;
 
@@ -25,13 +25,13 @@ public class SoundManager : SaiSingleton<SoundManager>
     protected override void Start()
     {
         base.Start();
-        this.StartMusicBackground();
+        //this.StartMusicBackground();
     }
 
     protected virtual void FixedUpdate()
     {
-        this.VolumeMusicUpdating(volumeMusic);
-        this.VolumeSfxUpdating(volumeSFX);
+        //this.VolumeMusicUpdating();
+        //this.VolumeSfxUpdating();
     }
 
     protected override void LoadComponents()
@@ -84,20 +84,20 @@ public class SoundManager : SaiSingleton<SoundManager>
         this.listMusic.Add(newMusic);
     }
 
-    public virtual SFXCtrl CreateSfx(SoundName soundName)
+    public virtual SFXCtrl CreateSFX(SoundName soundName)
     {
         SFXCtrl soundPrefab = (SFXCtrl)this.ctrl.Prefabs.GetByName(soundName.ToString());
-        return this.CreateSfx(soundPrefab);
+        return this.CreateSFX(soundPrefab);
     }
 
-    public virtual SFXCtrl CreateSfx(SFXCtrl sfxPrefab)
+    public virtual SFXCtrl CreateSFX(SFXCtrl sfxPrefab)
     {
         SFXCtrl newSound = (SFXCtrl)this.ctrl.Spawner.Spawn(sfxPrefab, Vector3.zero);
-        this.AddSfx(newSound);
+        this.AddSFX(newSound);
         return newSound;
     }
 
-    public virtual void AddSfx(SFXCtrl newSound)
+    public virtual void AddSFX(SFXCtrl newSound)
     {
         if (this.listSfx.Contains(newSound)) return;
         this.listSfx.Add(newSound);
@@ -109,15 +109,16 @@ public class SoundManager : SaiSingleton<SoundManager>
         foreach(MusicCtrl musicCtrl in this.listMusic)
         {
             musicCtrl.AudioSource.volume = this.volumeMusic;
+            Debug.Log("VolumeMusicUpdating: " + this.volumeMusic);
         }
     }
 
-    public virtual void VolumeSfxUpdating(float volume)
+    public virtual void VolumeSFXUpdating(float volume)
     {
-        this.volumeSFX = volume;
+        this.volumeSfx = volume;
         foreach (SFXCtrl sfxCtrl in this.listSfx)
         {
-            sfxCtrl.AudioSource.volume = this.volumeSFX;
+            sfxCtrl.AudioSource.volume = this.volumeSfx;
         }
     }
 }

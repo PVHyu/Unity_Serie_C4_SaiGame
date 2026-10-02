@@ -49,7 +49,7 @@ public class TowerShooting : TowerAbstract
     {
         if (this.effectSpawner != null) return;
         this.effectSpawner = GameObject.Find("EffectSpawner").GetComponent<EffectSpawner>();
-        Debug.Log(transform.name + ": LoadEffectSpawner", gameObject);
+        // Debug.Log(transform.name + ": LoadEffectSpawner", gameObject);
     }
 
     protected virtual void TargetLoading()
@@ -140,7 +140,7 @@ public class TowerShooting : TowerAbstract
 
     protected virtual void SpawnSound(Vector3 position)
     {
-        SFXCtrl newSfx = SoundManager.Instance.CreateSfx(this.shootSFXName);
+        SFXCtrl newSfx = SoundManager.Instance.CreateSFX(this.shootSFXName);
         newSfx.transform.position = position;
         newSfx.gameObject.SetActive(true);
     }

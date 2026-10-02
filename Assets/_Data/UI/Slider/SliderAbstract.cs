@@ -6,6 +6,11 @@ public abstract class SliderAbstract : SaiMonoBehaviour
 {
     [SerializeField] protected Slider slider;
 
+    protected override void Start()
+    {
+        this.slider.onValueChanged.AddListener(OnSliderValueChanged);
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -14,8 +19,13 @@ public abstract class SliderAbstract : SaiMonoBehaviour
 
     protected virtual void LoadSlider()
     {
-        if(this.slider != null) return;
-        this.slider = GetComponentInChildren<Slider>();
-        Debug.Log(transform.name + " : LoadSlider", gameObject);
+        if (this.slider != null) return;
+        this.slider = GetComponent<Slider>();
+        Debug.Log(transform.name + ": LoadSlider", gameObject);
+    }
+
+    protected virtual void OnSliderValueChanged(float value)
+    {
+        
     }
 }
