@@ -16,7 +16,6 @@ public class AttackLight : AttackAbstract
         effectFly.FlyToTarget.SetTarget(this.playerCtrl.CrosshairPointer.transform);
 
         effect.gameObject.SetActive(true);
-        Debug.Log("Light Attack");
         this.SpawnSound(attackPoint.transform.position);
     }
 

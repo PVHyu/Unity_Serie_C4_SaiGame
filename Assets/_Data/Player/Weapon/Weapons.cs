@@ -26,6 +26,8 @@ public class Weapons : SaiMonoBehaviour
 
     public virtual WeaponAbstract GetCurrentWeapon()
     {
+        Debug.Log("GetPositionAttack: " + this.weapons[0].AttackPoint.transform.position, gameObject);
+
         return this.weapons[0];
     }
 }
